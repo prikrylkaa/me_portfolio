@@ -77,6 +77,8 @@ header{
   gap:2px;
   white-space:nowrap;
   transition:box-shadow .3s;
+  min-width:420px;
+  justify-content:center;
 }
 header:hover{box-shadow:0 4px 32px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255,.9);}
 .hdr-id{display:none;}
@@ -92,6 +94,7 @@ header:hover{box-shadow:0 4px 32px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255
 .hdr-nav a:hover{background:rgba(15,15,15,.06);color:var(--ink);}
 
 /* LANG SWITCHER */
+.lang-fixed{position:fixed;top:24px;right:24px;z-index:201;display:flex;align-items:center;border:1px solid var(--bd);border-radius:99px;overflow:hidden;background:var(--glass);backdrop-filter:blur(12px);}
 .lang-sw{
   display:flex;align-items:center;
   border:1px solid var(--bd);border-radius:99px;
@@ -111,6 +114,7 @@ header:hover{box-shadow:0 4px 32px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255
 .hdr-mob{
   display:none;background:none;border:none;cursor:none;
   padding:10px;border-radius:8px;
+  color:var(--ink);
   transition:background .2s;
 }
 .hdr-mob:hover{background:rgba(15,15,15,.06);}
@@ -142,8 +146,8 @@ header:hover{box-shadow:0 4px 32px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255
 
 /* ── rotating badge ── */
 .hero-badge{
-  position:absolute;bottom:72px;left:50%;transform:translateX(-50%);
-  width:128px;height:128px;z-index:1;
+  position:absolute;bottom:60px;left:50%;transform:translateX(-50%);
+  width:110px;height:110px;z-index:1;
   opacity:0;
 }
 .badge-ring{
@@ -162,7 +166,7 @@ header:hover{box-shadow:0 4px 32px rgba(0,0,0,.1),inset 0 1px 0 rgba(255,255,255
   font-size:22px;color:var(--peach);
   line-height:1;user-select:none;
 }
-@media(max-width:800px){.hero-badge{bottom:60px;left:50%;right:auto;transform:translateX(-50%);width:100px;height:100px;}}
+@media(max-width:800px){.hero-badge{bottom:16px;left:50%;right:auto;transform:translateX(-50%);width:80px;height:80px;}}
 
 /* ── scroll progress ── */
 #progress{
@@ -628,7 +632,10 @@ footer{
   .hdr-nav{display:none;}
   .hdr-mob{display:flex;margin-left:auto;margin-right:0;}
   .sec,#offer,#work,#exp,#about,footer{padding-left:24px;padding-right:24px;}
-  #hero{padding:80px 24px 64px;}
+  #hero{padding:80px 24px 56px;}
+  .hero-meta{gap:16px 28px;}
+  .hm-val{font-size:13px;}
+  .hero-foot{margin-top:28px;}
   #process{padding:72px 24px;}
   .offer-grid{grid-template-columns:1fr;}
   .process-steps{grid-template-columns:1fr 1fr;gap:32px 16px;}
@@ -636,6 +643,10 @@ footer{
   .ft-big{font-size:clamp(40px,12vw,68px);}
   .ft-btm{flex-direction:column;}
   .exp-tbl .et-team,.exp-tbl .et-dur{display:none;}
+}
+@media(pointer:coarse){
+  #cdot,#cring{display:none!important;}
+  body,*{cursor:auto!important;}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
@@ -645,6 +656,10 @@ footer{
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
+<div class="lang-fixed" role="group" aria-label="Language">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="cz">CZ</button>
+</div>
 <div id="cdot" aria-hidden="true"></div>
 <div id="cring" aria-hidden="true"></div>
 
@@ -660,10 +675,6 @@ footer{
     <a href="#exp"   data-t="nav.exp">Experience</a>
     <a href="#about" data-t="nav.about">About</a>
   </nav>
-  <div class="lang-sw" role="group" aria-label="Language">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="cz">CZ</button>
-  </div>
   <button class="hdr-mob" id="mob-btn" aria-label="Menu" aria-expanded="false">
     <span></span><span></span>
   </button>
@@ -1095,9 +1106,9 @@ footer{
   </button>
   <a href="#work"    onclick="closeMob()" data-t="nav.work">Work</a>
   <a href="#offer"   onclick="closeMob()" data-t="nav.services">Services</a>
+  <a href="#process" onclick="closeMob()">Process</a>
   <a href="#exp"     onclick="closeMob()" data-t="nav.exp">Experience</a>
   <a href="#about"   onclick="closeMob()" data-t="nav.about">About</a>
-  <a href="rankacy-case-study.html" class="case">Case Study →</a>
   <a href="#contact" onclick="closeMob()" data-t="nav.cta">Get in touch</a>
 </div>
 
@@ -1126,7 +1137,9 @@ const TRANS = {
     "s4.t":"Mobile App Design","s4.d":"Native mobile experiences with strong interaction design, intuitive flows, and platform-aware patterns that feel natural and polished.",
     "s5.t":"UX Research","s5.d":"User interviews, usability testing, and data-informed design iterations. Translating findings into product decisions that hold up under scrutiny.",
     "s6.t":"AI-assisted Prototyping","s6.d":"Rapid ideation and prototyping using AI tools to explore, validate, and communicate design directions faster than traditional methods.",
-    "p0.role":"Head of Design / Product Designer","p0.desc":"Redesign a produktová směrnice pro PalmApp, B2B SaaS platformu pro zaměstnaneckou komunikaci, HR self-service a AI podporu. Redesignovala jsem mobilní appku a HR/admin dashboard — produktová struktura, user flows a vizuální směr. Moduly: novinky, dokumenty, benefity, záloha mzdy, interní služby a AI asistent.","r1.role":"Product Designer",
+    "p0.role":"Head of Design / Product Designer",
+    "p0.desc":"Redesign and product direction for PalmApp, a B2B SaaS platform for employee communication, HR self-service and AI-powered support. I redesigned the mobile app and HR/admin dashboard — improving product structure, user flows and visual direction across modules including company news, documents, benefits, wage advance, internal services and AI assistant.",
+    "r1.role":"Product Designer",
     "r1.desc":"First dedicated designer shaping the UX/UI foundations of a SaaS analytics platform for competitive CS2 players. I designed data-heavy dashboards, player performance views, match analysis flows and mobile experiences, translating raw game data into clear, actionable insights.",
     "r2.role":"UX/UI Designer",
     "r2.desc":"Worked across major Czech content platforms with millions of users, including Seznam Zprávy, Novinky.cz, Mapy.cz and Sport.cz. I contributed to UX/UI solutions, maintained shared design system components and helped keep large-scale digital products consistent, usable and scalable.",
@@ -1165,28 +1178,30 @@ const TRANS = {
     "s4.t":"Design mobilních aplikací","s4.d":"Nativní mobilní prostředí se silným interaction designem, intuitivními flows a platformně věrnými vzory, které působí přirozeně.",
     "s5.t":"UX výzkum","s5.d":"Uživatelské rozhovory, testování použitelnosti a datově podložené iterace. Přeměna zjištění na produktová rozhodnutí, která obstojí v praxi.",
     "s6.t":"AI-asistované prototypování","s6.d":"Rychlá ideace a prototypování pomocí AI nástrojů — prozkoumávání, validace a komunikace designových směrů rychleji než tradičními metodami.",
-    "r1.role":"Product Designér",
-    "r1.desc":"Jako první a jediný designér jsem formoval UX/UI základy SaaS analytické platformy pro hráče CS2. Navrhoval jsem datově bohaté dashboardy, přehledy výkonu hráčů, analýzy zápasů a mobilní prostředí — přeměňoval surová herní data v přehledné, akční poznatky.",
-    "r2.role":"UX/UI Designér",
-    "r2.desc":"Pracoval jsem na velkých českých obsahových platformách s miliony uživatelů — Seznam Zprávy, Novinky.cz, Mapy.cz a Sport.cz. Přispíval jsem k UX/UI řešením, udržoval sdílené komponenty design systému a pomáhal udržovat rozsáhlé digitální produkty konzistentní a škálovatelné.",
-    "r3.role":"UX/UI Designér",
-    "r3.desc":"Navrhoval jsem uživatelsky zaměřené webové a mobilní prostředí pro Albert, vyvažujíc obchodní cíle, výzkumné poznatky a reálné potřeby uživatelů. Pracoval jsem v cross-funkčních týmech, účastnil se testování použitelnosti a přetvářel výzkumná zjištění do praktických produktových zlepšení.",
-    "r4.role":"UX/UI Designér",
-    "r4.desc":"Navrhoval jsem UX/UI pro e-commerce platformy a webové aplikace, od prvních konceptů po finální předání. Úzce jsem spolupracoval s klienty, překládal obchodní požadavky do funkčních produktových flows a vlastnil designová rozhodnutí v celém životním cyklu projektu.",
-    "r5.role":"UX/UI Designér",
-    "r5.desc":"Pracoval jsem na raných startupových a klientských projektech — webové aplikace, mobilní appky a prezentační weby. Tato role mi dala silné základy v end-to-end designu, testování použitelnosti, komunikaci s klienty a spolupráci s frontend vývojáři.",
+    "p0.role":"Head of Design / Product Designérka",
+    "p0.desc":"Redesign a produktová směrnice pro PalmApp, B2B SaaS platformu pro zaměstnaneckou komunikaci, HR self-service a AI podporu. Redesignovala jsem mobilní appku a HR/admin dashboard — produktová struktura, user flows a vizuální směr. Moduly: novinky, dokumenty, benefity, záloha mzdy, interní služby a AI asistent.",
+    "r1.role":"Product Designérka",
+    "r1.desc":"Jako první a jediná designérka jsem formovala UX/UI základy SaaS analytické platformy pro hráče CS2. Navrhovala jsem datově bohaté dashboardy, přehledy výkonu hráčů, analýzy zápasů a mobilní prostředí — přeměňovala surová herní data v přehledné, akční poznatky.",
+    "r2.role":"UX/UI Designérka",
+    "r2.desc":"Pracovala jsem na velkých českých obsahových platformách s miliony uživatelů — Seznam Zprávy, Novinky.cz, Mapy.cz a Sport.cz. Přispívala jsem k UX/UI řešením, udržovala sdílené komponenty design systému a pomáhala udržovat rozsáhlé digitální produkty konzistentní a škálovatelné.",
+    "r3.role":"UX/UI Designérka",
+    "r3.desc":"Navrhovala jsem uživatelsky zaměřené webové a mobilní prostředí pro Albert, vyvažujíc obchodní cíle, výzkumné poznatky a reálné potřeby uživatelů. Pracovala jsem v cross-funkčních týmech, účastnila se testování použitelnosti a přetvářela výzkumná zjištění do praktických produktových zlepšení.",
+    "r4.role":"UX/UI Designérka",
+    "r4.desc":"Navrhovala jsem UX/UI pro e-commerce platformy a webové aplikace, od prvních konceptů po finální předání. Úzce jsem spolupracovala s klienty, překládala obchodní požadavky do funkčních produktových flows a vlastnila designová rozhodnutí v celém životním cyklu projektu.",
+    "r5.role":"UX/UI Designérka",
+    "r5.desc":"Pracovala jsem na raných startupových a klientských projektech — webové aplikace, mobilní appky a prezentační weby. Tato role mi dala silné základy v end-to-end designu, testování použitelnosti, komunikaci s klienty a spolupráci s frontend vývojáři.",
     "exp.col1":"Role a firma","exp.col2":"Období","exp.col3":"Tým","exp.col4":"Délka",
-    "e1.role":"Product Designér","e1.type":"SaaS · Analytika · Gaming","e1.team":"Core Product tým",
-    "e2.role":"UX/UI Designér","e2.type":"Obsah & Design systémy","e2.team":"Tým design systému",
-    "e3.role":"UX/UI Designér","e3.type":"Digitální agentura","e3.team":"Klientské projekty",
-    "e4.role":"UX/UI Designér","e4.type":"E-commerce & Webové aplikace","e4.team":"Startup & Klienti",
-    "e5.role":"UX/UI Designér","e5.type":"Startup & Klientské projekty","e5.team":"Greenfield projekty",
+    "e1.role":"Product Designérka","e1.type":"SaaS · Analytika · Gaming","e1.team":"Core Product tým",
+    "e2.role":"UX/UI Designérka","e2.type":"Obsah & Design systémy","e2.team":"Tým design systému",
+    "e3.role":"UX/UI Designérka","e3.type":"Digitální agentura","e3.team":"Klientské projekty",
+    "e4.role":"UX/UI Designérka","e4.type":"E-commerce & Webové aplikace","e4.team":"Startup & Klienti",
+    "e5.role":"UX/UI Designérka","e5.type":"Startup & Klientské projekty","e5.team":"Greenfield projekty",
     "about.hl":"Navrhuji pro <em>přehlednost</em> v komplexních systémech.",
     "about.p1":"Jsem Product / UX Designérka s <strong>7+ lety zkušeností</strong> se SaaS analytikou, rozsáhlými obsahovými platformami, e-commerce a early-stage startupy. Nejlépe pracuji, když je problém skutečně těžký.",
     "about.p2":"Datově bohaté dashboardy, design systémy škálovatelné přes pět produktů, rozhraní, kde každé rozhodnutí o hierarchii mění to, jak miliony lidí chápou informace — to je moje práce.",
-    "about.p3":"<strong>Aktuálně hledám</strong> full-time nebo senior freelance spolupráci. Sídlím v Ostravě — dostupná plně remote. Angličtina B2.",
+    "about.p3":"<strong>Aktuálně hledám</strong> full-time nebo senior freelance spolupráci. Sídlím v Ostravě — dostupná plně remote.",
     "ft.lbl":"Pojďme spolupracovat","ft.big":"Pojďme postavit<br/>něco<br/><em>výjimečného.</em>","ft.btn":"Napište mi ↗",
-    "ft.copy":"© 2026 Lucie Pavlíková · Product / UX Designérka · Ostrava"
+    "ft.copy":"© 2026 Lucie Pavlíková · Product / UX Designérka · Ostrava, CZ"
   }
 };
 
