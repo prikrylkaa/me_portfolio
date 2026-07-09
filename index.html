@@ -652,6 +652,28 @@ footer{
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
   #cdot,#cring{display:none;}body{cursor:auto;}
 }
+
+/* ── CURSOR SPOTLIGHT ── */
+@media(hover:hover){
+  body::after{
+    content:"";
+    position:fixed;inset:0;
+    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),
+      rgba(232,131,106,.055) 0%, transparent 55%);
+    pointer-events:none;
+    z-index:0;
+    transition:background .1s;
+  }
+}
+
+/* cursor ring subtle pulse */
+#cring:not(.h){
+  animation:ringPulse 3s ease-in-out infinite;
+}
+@keyframes ringPulse{
+  0%,100%{opacity:.22;}
+  50%{opacity:.38;}
+}
 </style>
 </head>
 <body>
@@ -1115,6 +1137,9 @@ footer{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
+/* ── APPLY SAVED LANG ON LOAD ── */
+if(currentLang !== "en") { setTimeout(() => setLang(currentLang), 50); }
+
 /* ══════════════════════════════════════════
    TRANSLATIONS
 ══════════════════════════════════════════ */
@@ -1215,8 +1240,9 @@ const TRANS = {
   }
 };
 
-let currentLang = "en";
+let currentLang = localStorage.getItem('portfolio-lang') || "en";
 function setLang(lang) {
+  localStorage.setItem('portfolio-lang', lang);
   currentLang = lang;
   document.documentElement.lang = lang === "cz" ? "cs" : "en";
   document.querySelectorAll("[data-t]").forEach(el => {

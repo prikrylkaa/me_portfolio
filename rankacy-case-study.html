@@ -62,21 +62,43 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
   nav{top:12px;width:calc(100% - 32px);max-width:420px;}
   .ft{padding:40px 24px;flex-direction:column;align-items:flex-start;}
 }
+
+/* ── LANG FIXED ── */
+.lang-fixed{
+  position:fixed;top:24px;right:24px;z-index:201;
+  display:flex;align-items:center;
+  border:1px solid rgba(15,15,15,.09);border-radius:99px;
+  overflow:hidden;
+  background:rgba(250,250,248,.85);
+  backdrop-filter:blur(12px);
+}
+.lang-btn{
+  font-size:11px;font-weight:600;letter-spacing:.08em;
+  padding:6px 13px;border:none;background:transparent;
+  color:rgba(15,15,15,.4);cursor:pointer;
+  transition:background .2s,color .2s;
+}
+.lang-btn.active{background:#0F0F0F;color:#F2F1ED;}
+.lang-btn:not(.active):hover{background:rgba(15,15,15,.06);color:#0F0F0F;}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nb">← Zpět</a>
+  <a href="index.html" class="nb" id="cs-back">← Back</a>
   <span class="nd">/</span>
   <span class="nt">Rankacy AI — Case Study</span>
 </nav>
+<div class="lang-fixed" id="cs-lang" role="group" aria-label="Language">
+  <button class="lang-btn active" data-lang="en" onclick="csLang('en')">EN</button>
+  <button class="lang-btn" data-lang="cz" onclick="csLang('cz')">CZ</button>
+</div>
 
 <header class="hero">
   <div class="ht">Case Study 01 &nbsp;&nbsp;<span>Product Design · SaaS · Gaming Analytics</span></div>
   <h1 class="hh">Rankacy AI —<br/>Změna layoutu<br/><em>saas platformy.</em></h1>
   <div class="hm">
-    <div><div class="ml">Role</div><div class="mv">Product Designer (sole designer)</div></div>
+    <div><div class="ml">Role</div><div class="mv">Product Designer</div></div>
     <div><div class="ml">Období</div><div class="mv">Nov 2023 — Mar 2026</div></div>
     <div><div class="ml">Platforma</div><div class="mv">Web + Mobile (iOS/Android)</div></div>
     <div><div class="ml">Doména</div><div class="mv">SaaS · Gaming Analytics · AI</div></div>
@@ -143,7 +165,7 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 <div class="outs">
   <div class="out"><div class="on">20k</div><div class="ol">Uživatelů na platformě</div><div class="od">v době zahájení redesignu</div></div>
   <div class="out"><div class="on">0→1</div><div class="ol">Design system od nuly</div><div class="od">web + mobile, kompletní component library</div></div>
-  <div class="out"><div class="on">2+</div><div class="ol">Roky jako sole designer</div><div class="od">plná odpovědnost za každé designové rozhodnutí</div></div>
+  <div class="out"><div class="on">2+</div><div class="ol">2+ roky jako main designer</div><div class="od">plná odpovědnost za každé designové rozhodnutí</div></div>
   <div class="out"><div class="on">7</div><div class="ol">Hlavních oblastí produktu</div><div class="od">dashboard, srovnání, training, highlights, mobile, AI, design system</div></div>
 </div>
 
@@ -152,5 +174,31 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
   
 </footer>
 
+
+<script>
+/* ── LANGUAGE PERSISTENCE ── */
+(function(){
+  const saved = localStorage.getItem('portfolio-lang') || 'en';
+  csLang(saved, true);
+})();
+
+function csLang(lang, silent) {
+  localStorage.setItem('portfolio-lang', lang);
+  document.querySelectorAll('#cs-lang .lang-btn').forEach(b =>
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang)
+  );
+  // Update back link
+  const back = document.getElementById('cs-back');
+  if(back) back.textContent = lang === 'cz' ? '← Zpět' : '← Back';
+  // Update meta labels
+  const labels = {
+    'Role': lang === 'cz' ? 'Role' : 'Role',
+    'Období': lang === 'cz' ? 'Období' : 'Period',
+    'Platforma': lang === 'cz' ? 'Platforma' : 'Platform',
+    'Doména': lang === 'cz' ? 'Doména' : 'Domain',
+  };
+  if(!silent) return;
+}
+</script>
 </body>
 </html>
