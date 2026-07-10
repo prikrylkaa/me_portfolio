@@ -4,6 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Rankacy AI — Case Study · Lucie Pavlíková</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iI0U4ODM2QSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc3R5bGU9Iml0YWxpYyIKICAgICAgICBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iNDAwIiBmaWxsPSJ3aGl0ZSIKICAgICAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iLTAuNSI+TFA8L3RleHQ+Cjwvc3ZnPg=="/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -80,9 +81,12 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 }
 .lang-btn.active{background:#0F0F0F;color:#F2F1ED;}
 .lang-btn:not(.active):hover{background:rgba(15,15,15,.06);color:#0F0F0F;}
+
+/* lang toggle handled by JS */
+.en-text,.cz-text{display:none;}
 </style>
 </head>
-<body>
+<body class="lang-en">
 
 <nav>
   <a href="index.html" class="nb" id="cs-back">← Back</a>
@@ -95,13 +99,13 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 </div>
 
 <header class="hero">
-  <div class="ht">Case Study 01 &nbsp;&nbsp;<span>Product Design · SaaS · Gaming Analytics</span></div>
-  <h1 class="hh">Rankacy AI —<br/>Změna layoutu<br/><em>saas platformy.</em></h1>
+  <div class="ht"><span class="en-text">Case Study 01 &nbsp;&nbsp;</span><span class="cz-text">Case Study 01 &nbsp;&nbsp;</span><span>Product Design · SaaS · Gaming Analytics</span></div>
+  <h1 class="hh"><span class="en-text">Rankacy AI —<br/>Redesigning a<br/><em>SaaS platform.</em></span><span class="cz-text">Rankacy AI —<br/>Změna layoutu<br/><em>saas platformy.</em></span></h1>
   <div class="hm">
-    <div><div class="ml">Role</div><div class="mv">Product Designer</div></div>
-    <div><div class="ml">Období</div><div class="mv">Nov 2023 — Mar 2026</div></div>
-    <div><div class="ml">Platforma</div><div class="mv">Web + Mobile (iOS/Android)</div></div>
-    <div><div class="ml">Doména</div><div class="mv">SaaS · Gaming Analytics · AI</div></div>
+    <div><div class="ml"><span class="en-text">Role</span><span class="cz-text">Role</span></div><div class="mv">Product Designer</div></div>
+    <div><div class="ml"><span class="en-text">Period</span><span class="cz-text">Období</span></div><div class="mv">Nov 2023 — Mar 2026</div></div>
+    <div><div class="ml"><span class="en-text">Platform</span><span class="cz-text">Platforma</span></div><div class="mv">Web + Mobile (iOS/Android)</div></div>
+    <div><div class="ml"><span class="en-text">Domain</span><span class="cz-text">Doména</span></div><div class="mv">SaaS · Gaming Analytics · AI</div></div>
   </div>
 </header>
 
@@ -110,17 +114,17 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 </div>
 
 <div class="prose">
-  <h3>Kontext</h3>
-  <p>Rankacy od začátku pracovalo s obrovským množstvím herních dat sbíraných přímo ze CS2. Na backendu vznikala rozsáhlá datová knihovna, která se postupně rozšiřovala a prohlubovala. Produkt v této fázi data především sbíral, zkoumal a ověřoval, co všechno je z nich možné vytěžit.</p>
-  <p>Produktová vrstva se tomuto vývoji spíše přizpůsobovaly. Hledali jsme způsoby, jak data zobrazovat, kombinovat a dávat jim smysl, ale bez jasně definované struktury nebo dlouhodobé vize. Platforma měla zhruba <strong>20 000 uživatelů</strong>, ale stále fungovala spíš jako experimentální prostředí pro proof of concept, testování funkcí a práci s uživatelskou zpětnou vazbou.</p>
+  <h3 class="en-text">Context</h3><h3 class="cz-text">Kontext</h3>
+  <p class="en-text">Rankacy was built on a massive volume of gaming data collected directly from CS2. The backend held a growing data library that expanded and deepened over time. At this stage, the product was primarily focused on collecting, exploring and validating what could be extracted from that data.</p><p class="cz-text">Rankacy od začátku pracovalo s obrovským množstvím herních dat sbíraných přímo ze CS2. Na backendu vznikala rozsáhlá datová knihovna, která se postupně rozšiřovala a prohlubovala. Produkt v této fázi data především sbíral, zkoumal a ověřoval, co všechno je z nich možné vytěžit.</p>
+  <p class="en-text">The product layer was adapting to this evolution. We were finding ways to display, combine and make sense of the data — but without a clearly defined structure or long-term vision. The platform had around <strong>20,000 users</strong>, yet still functioned more as an experimental environment for proof of concept, feature testing and user feedback.</p><p class="cz-text">Produktová vrstva se tomuto vývoji spíše přizpůsobovaly. Hledali jsme způsoby, jak data zobrazovat, kombinovat a dávat jim smysl, ale bez jasně definované struktury nebo dlouhodobé vize. Platforma měla zhruba <strong>20 000 uživatelů</strong>, ale stále fungovala spíš jako experimentální prostředí pro proof of concept, testování funkcí a práci s uživatelskou zpětnou vazbou.</p>
 
-  <h3>Problém</h3>
-  <p>Od začátku vývoje produkt trpěl jedním zásadním problémem: <strong>funkce přibývaly rychle a bez jasné struktury</strong>. Podle stakeholderů bylo důležité všechno, což ve výsledku znamenalo, že nebylo důležité nic. Zároveň jsme hledali cestu, jak se odlišit od přímé konkurence – zavedených analytických platforem s miliony hráčů. Místo kopírování existujících řešení jsem začala experimentovat s přístupem založeným na gamifikaci a storytellingu.</p>
-  <p>Cílem bylo udělat datově náročný produkt přístupnější a více „game-like", hlavně pro mladší generaci hráčů.</p>
+  <h3 class="en-text">Challenge</h3><h3 class="cz-text">Problém</h3>
+  <p class="en-text">From the early stages, the product suffered from one key problem: <strong>features were being added quickly and without clear structure</strong>. According to stakeholders, everything was important — which meant nothing was. We were also searching for a way to differentiate from direct competitors — established analytics platforms with millions of players. Instead of copying existing solutions, I started experimenting with an approach based on gamification and storytelling.</p><p class="cz-text">Od začátku vývoje produkt trpěl jedním zásadním problémem: <strong>funkce přibývaly rychle a bez jasné struktury</strong>. Podle stakeholderů bylo důležité všechno, což ve výsledku znamenalo, že nebylo důležité nic. Zároveň jsme hledali cestu, jak se odlišit od přímé konkurence – zavedených analytických platforem s miliony hráčů. Místo kopírování existujících řešení jsem začala experimentovat s přístupem založeným na gamifikaci a storytellingu.</p>
+  <p class="en-text">The goal was to make a data-heavy product more accessible and more "game-like", especially for a younger generation of players.</p><p class="cz-text">Cílem bylo udělat datově náročný produkt přístupnější a více „game-like", hlavně pro mladší generaci hráčů.</p>
 
-  <h3>Postup</h3>
-  <p>Produkt se postupně dostal do fáze, kdy bylo potřeba se zastavit a znovu promyslet jeho uchopení.</p>
-  <p>Společně s kolegou jsme připravili prezentaci pro vedení, která definovala hlavní message platformy a její storytelling. V té chvíli jsme položili základní kostru budoucího produktu. I když jsme se jí později ne vždy drželi na 100 %, byl to důležitý moment – dal celému týmu společný směr a kontext.</p>
+  <h3 class="en-text">Approach</h3><h3 class="cz-text">Postup</h3>
+  <p class="en-text">The product had gradually reached a point where we needed to stop and rethink its direction.</p><p class="cz-text">Produkt se postupně dostal do fáze, kdy bylo potřeba se zastavit a znovu promyslet jeho uchopení.</p>
+  <p class="en-text">Together with a colleague, we prepared a presentation for leadership that defined the platform's core message and storytelling. That moment laid the skeleton for the future product. Even if we didn't always stick to it 100%, it was a pivotal moment — it gave the whole team a shared direction and context.</p><p class="cz-text">Společně s kolegou jsme připravili prezentaci pro vedení, která definovala hlavní message platformy a její storytelling. V té chvíli jsme položili základní kostru budoucího produktu. I když jsme se jí později ne vždy drželi na 100 %, byl to důležitý moment – dal celému týmu společný směr a kontext.</p>
 </div>
 
 
@@ -128,9 +132,9 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 
 
 <div class="prose">
-  <p>Získání podpory stakeholderů znamenalo zelenou. Následovalo wireframování nového systému. Místo klasického levého sidebaru, typického pro analytické platformy, jsme hledali úplně nové pojetí navigace. <strong>Inspirovali jsme se herním prostředím</strong>, což znamenalo opustit zaběhlá UX řešení a začít přemýšlet jinak.</p>
-  <p>Zároveň jsme pracovali s velmi datově náročnou platformou. Vše proto muselo působit jednoduše a přehledně, i když se pod povrchem skrývalo velké množství informací. Data jsme začali strukturovat do více vrstev podle úrovně znalostí hráče. Experimentovali jsme s vizuální hierarchií a novými UI prvky, přičemž důležitým principem se stal <strong>silný vizuální střed</strong> – podobně jako v hrách, kde se vše podstatné odehrává uprostřed obrazovky.</p>
-  <p>Součástí redesignu bylo také narovnání informační architektury a navigace, které byly do té doby spíše opomíjené. Stanovili jsme priority základních funkcí a ostatní prvky jsme buď logicky podřadili, nebo sloučili do větších celků. To nám zároveň otevřelo prostor lépe korigovat chování hráčů napříč platformou.</p>
+  <p class="en-text">With stakeholder buy-in secured, we moved into wireframing a new system. Instead of the classic left sidebar typical of analytics platforms, we looked for an entirely new approach to navigation. <strong>We drew inspiration from gaming environments</strong>, which meant abandoning established UX solutions and thinking differently.</p><p class="cz-text">Získání podpory stakeholderů znamenalo zelenou. Následovalo wireframování nového systému. Místo klasického levého sidebaru, typického pro analytické platformy, jsme hledali úplně nové pojetí navigace. <strong>Inspirovali jsme se herním prostředím</strong>, což znamenalo opustit zaběhlá UX řešení a začít přemýšlet jinak.</p>
+  <p class="en-text">At the same time, we were working with a very data-dense platform. Everything had to feel simple and clear, even with a large amount of information beneath the surface. We started structuring data into layers based on the player's knowledge level, experimenting with visual hierarchy and new UI elements. A key principle emerged: <strong>a strong visual centre</strong> — like in games, where everything important happens in the middle of the screen.</p><p class="cz-text">Zároveň jsme pracovali s velmi datově náročnou platformou. Vše proto muselo působit jednoduše a přehledně, i když se pod povrchem skrývalo velké množství informací. Data jsme začali strukturovat do více vrstev podle úrovně znalostí hráče. Experimentovali jsme s vizuální hierarchií a novými UI prvky, přičemž důležitým principem se stal <strong>silný vizuální střed</strong> – podobně jako v hrách, kde se vše podstatné odehrává uprostřed obrazovky.</p>
+  <p class="en-text">Redesigning the information architecture and navigation — areas largely overlooked until then — was also part of the process. We prioritised core features and either logically subordinated or merged the rest, which also opened up space to better guide player behaviour across the platform.</p><p class="cz-text">Součástí redesignu bylo také narovnání informační architektury a navigace, které byly do té doby spíše opomíjené. Stanovili jsme priority základních funkcí a ostatní prvky jsme buď logicky podřadili, nebo sloučili do větších celků. To nám zároveň otevřelo prostor lépe korigovat chování hráčů napříč platformou.</p>
 </div>
 
 
@@ -138,10 +142,10 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 
 
 <div class="prose">
-  <h3>Testování</h3>
-  <p>Během vývoje jsme průběžně testovali a vedli otevřené diskuze na Rankacy Discordu. Komunita byla sice malá, ale velmi aktivní a zapojená. Hráči jsou specifická skupina uživatelů, ale právě tahle kapitola byla extrémně přínosná.</p>
-  <p>Do vývoje jsme zapojovali uživatele formou porovnávání návrhů, anket, hlasování a otevřené zpětné vazby. Vývoj tak měl hodně komunitní charakter a uživatelé se cítili být jeho součástí.</p>
-  <p>Proběhlo také několik živých testování, kdy si uživatelé nový vizuál poprvé sami proklikávali. Dostávali jednoduché úkoly a my sledovali jejich reakce. Kromě několika specifických míst byla odezva velmi pozitivní a rychle se ukázalo, že prostředí je intuitivní i pro nové uživatele.</p>
+  <h3 class="en-text">Testing</h3><h3 class="cz-text">Testování</h3>
+  <p class="en-text">Throughout development we continuously tested and held open discussions in the Rankacy Discord. The community was small but very active and engaged. Gamers are a specific user group, and this chapter proved extremely valuable.</p><p class="cz-text">Během vývoje jsme průběžně testovali a vedli otevřené diskuze na Rankacy Discordu. Komunita byla sice malá, ale velmi aktivní a zapojená. Hráči jsou specifická skupina uživatelů, ale právě tahle kapitola byla extrémně přínosná.</p>
+  <p class="en-text">We involved users through design comparisons, surveys, polls and open feedback. Development took on a strong community character and users felt like part of it.</p><p class="cz-text">Do vývoje jsme zapojovali uživatele formou porovnávání návrhů, anket, hlasování a otevřené zpětné vazby. Vývoj tak měl hodně komunitní charakter a uživatelé se cítili být jeho součástí.</p>
+  <p class="en-text">We also ran several live usability tests where users clicked through the new interface for the first time. They were given simple tasks and we observed their reactions. Aside from a few specific friction points, the response was very positive and it quickly became clear that the environment was intuitive even for new users.</p><p class="cz-text">Proběhlo také několik živých testování, kdy si uživatelé nový vizuál poprvé sami proklikávali. Dostávali jednoduché úkoly a my sledovali jejich reakce. Kromě několika specifických míst byla odezva velmi pozitivní a rychle se ukázalo, že prostředí je intuitivní i pro nové uživatele.</p>
 </div>
 
 
@@ -156,49 +160,48 @@ nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;disp
 </div>
 
 <div class="prose">
-  <h3>Dopady</h3>
-  <p>Redesign měl na celý projekt zásadní dopad. Rozhodnutí „překopat" produkt v rané fázi se zpětně ukázalo jako klíčové.</p>
-  <p>Připravili jsme si půdu pro budování robustní datové platformy do budoucna. Gamingové pojetí nám dalo větší kreativní svobodu, aniž bychom ztratili datovou hloubku.</p>
-  <p>Design posunul Rankacy výrazně i po vizuální stránce a pomohl platformě jasně se odlišit od konkurence.</p>
+  <h3 class="en-text">Impact</h3><h3 class="cz-text">Dopady</h3>
+  <p class="en-text">The redesign had a significant impact on the entire project. The decision to overhaul the product in its early phase proved to be exactly right in retrospect.</p><p class="cz-text">Redesign měl na celý projekt zásadní dopad. Rozhodnutí „překopat" produkt v rané fázi se zpětně ukázalo jako klíčové.</p>
+  <p class="en-text">We laid the groundwork for building a robust data platform for the future. The gaming approach gave us greater creative freedom without sacrificing data depth.</p><p class="cz-text">Připravili jsme si půdu pro budování robustní datové platformy do budoucna. Gamingové pojetí nám dalo větší kreativní svobodu, aniž bychom ztratili datovou hloubku.</p>
+  <p class="en-text">The design also pushed Rankacy forward visually and helped the platform clearly differentiate itself from the competition.</p><p class="cz-text">Design posunul Rankacy výrazně i po vizuální stránce a pomohl platformě jasně se odlišit od konkurence.</p>
 </div>
 
 <div class="outs">
-  <div class="out"><div class="on">20k</div><div class="ol">Uživatelů na platformě</div><div class="od">v době zahájení redesignu</div></div>
-  <div class="out"><div class="on">0→1</div><div class="ol">Design system od nuly</div><div class="od">web + mobile, kompletní component library</div></div>
-  <div class="out"><div class="on">2+</div><div class="ol">2+ roky jako main designer</div><div class="od">plná odpovědnost za každé designové rozhodnutí</div></div>
-  <div class="out"><div class="on">7</div><div class="ol">Hlavních oblastí produktu</div><div class="od">dashboard, srovnání, training, highlights, mobile, AI, design system</div></div>
+  <div class="out"><div class="on">20k</div><div class="ol"><span class="en-text">Users on the platform</span><span class="cz-text">Uživatelů na platformě</span></div><div class="od"><span class="en-text">at the start of the redesign</span><span class="cz-text">v době zahájení redesignu</span></div></div>
+  <div class="out"><div class="on">0→1</div><div class="ol"><span class="en-text">Design system from scratch</span><span class="cz-text">Design system od nuly</span></div><div class="od"><span class="en-text">web + mobile, full component library</span><span class="cz-text">web + mobile, kompletní component library</span></div></div>
+  <div class="out"><div class="on">2+</div><div class="ol"><span class="en-text">2+ years as main designer</span><span class="cz-text">2+ roky jako main designer</span></div><div class="od"><span class="en-text">full ownership of every design decision</span><span class="cz-text">plná odpovědnost za každé designové rozhodnutí</span></div></div>
+  <div class="out"><div class="on">7</div><div class="ol"><span class="en-text">Core product areas</span><span class="cz-text">Hlavních oblastí produktu</span></div><div class="od"><span class="en-text">dashboard, comparison, training, highlights, mobile, AI, design system</span><span class="cz-text">dashboard, srovnání, training, highlights, mobile, AI, design system</span></div></div>
 </div>
 
 <footer class="ft">
-  <a href="index.html">← Zpět na portfolio</a>
+  <a href="index.html"><span class="en-text">← Back to portfolio</span><span class="cz-text">← Zpět na portfolio</span></a>
   
 </footer>
 
 
 <script>
-/* ── LANGUAGE PERSISTENCE ── */
-(function(){
-  const saved = localStorage.getItem('portfolio-lang') || 'en';
-  csLang(saved, true);
-})();
-
-function csLang(lang, silent) {
-  localStorage.setItem('portfolio-lang', lang);
-  document.querySelectorAll('#cs-lang .lang-btn').forEach(b =>
-    b.classList.toggle('active', b.getAttribute('data-lang') === lang)
-  );
-  // Update back link
-  const back = document.getElementById('cs-back');
-  if(back) back.textContent = lang === 'cz' ? '← Zpět' : '← Back';
-  // Update meta labels
-  const labels = {
-    'Role': lang === 'cz' ? 'Role' : 'Role',
-    'Období': lang === 'cz' ? 'Období' : 'Period',
-    'Platforma': lang === 'cz' ? 'Platforma' : 'Platform',
-    'Doména': lang === 'cz' ? 'Doména' : 'Domain',
-  };
-  if(!silent) return;
+function csLang(lang) {
+  /* Show/hide every element directly — no CSS cascade issues */
+  document.querySelectorAll('.en-text').forEach(function(el){
+    el.style.display = (lang === 'en') ? '' : 'none';
+  });
+  document.querySelectorAll('.cz-text').forEach(function(el){
+    el.style.display = (lang === 'cz') ? '' : 'none';
+  });
+  /* Active button state */
+  document.querySelectorAll('#cs-lang .lang-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+  /* Persist */
+  try { localStorage.setItem('portfolio-lang', lang); } catch(e){}
 }
+
+/* Init on load */
+(function(){
+  var saved = 'en';
+  try { saved = localStorage.getItem('portfolio-lang') || 'en'; } catch(e){}
+  csLang(saved);
+})();
 </script>
 </body>
 </html>
