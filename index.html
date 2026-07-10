@@ -41,25 +41,15 @@ body{
 /* ═══════════════════════════════════════════
    CURSOR
 ═══════════════════════════════════════════ */
-#cdot,#cring{
-  position:fixed;top:0;left:0;
-  pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);
-  will-change:transform;
-}
+#cdot,
 #cdot{
   width:8px;height:8px;border-radius:50%;
   background:var(--ink);z-index:9999;
   transition:transform .15s,background .2s;
 }
-#cring{
-  z-index:9998;width:36px;height:36px;border-radius:50%;
-  border:1px solid rgba(15,15,15,.22);
-  transition:width .3s var(--ease),height .3s var(--ease),border-color .25s,background .25s;
-}
-#cring.h{width:54px;height:54px;border-color:var(--peach);background:var(--peach-s);}
+
 body.on-dark #cdot{background:var(--bg);}
-body.on-dark #cring{border-color:rgba(250,250,248,.28);}
+
 
 /* ═══════════════════════════════════════════
    HEADER
@@ -646,45 +636,41 @@ footer{
   .exp-tbl .et-team,.exp-tbl .et-dur{display:none;}
 }
 @media(pointer:coarse){
-  #cdot,#cring{display:none!important;}
+  #cdot,
   body,*{cursor:auto!important;}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
-  #cdot,#cring{display:none;}body{cursor:auto;}
+  #cdot,body{cursor:auto;}
 }
 
-/* ── CURSOR SPOTLIGHT ── */
-@media(hover:hover){
-  body::after{
-    content:"";
-    position:fixed;inset:0;
-    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%),
-      rgba(232,131,106,.055) 0%, transparent 55%);
-    pointer-events:none;
-    z-index:0;
-    transition:background .1s;
-  }
+
 }
 
-/* cursor ring subtle pulse */
-#cring:not(.h){
-  animation:ringPulse 3s ease-in-out infinite;
-}
-@keyframes ringPulse{
-  0%,100%{opacity:.22;}
+
+
   50%{opacity:.38;}
 }
+
+/* ── WATER RIPPLE CANVAS ── */
+#ripple-canvas{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  z-index:0;
+  opacity:1;
+}
+@media(pointer:coarse){#ripple-canvas{display:none;}}
 </style>
 </head>
 <body>
 <div id="progress" aria-hidden="true"></div>
+<canvas id="ripple-canvas" aria-hidden="true"></canvas>
 <div class="lang-fixed" role="group" aria-label="Language">
   <button class="lang-btn active" data-lang="en">EN</button>
   <button class="lang-btn" data-lang="cz">CZ</button>
 </div>
 <div id="cdot" aria-hidden="true"></div>
-<div id="cring" aria-hidden="true"></div>
 
 <!-- ═══ HEADER ═══ -->
 <header id="hdr">
@@ -1262,36 +1248,72 @@ const _saved = localStorage.getItem('portfolio-lang');
 if(_saved && _saved !== 'en') setLang(_saved);
 
 /* ══════════════════════════════════════════
-   CURSOR
+   CURSOR — instant dot
 ══════════════════════════════════════════ */
 const cdot = document.getElementById("cdot");
-const cring = document.getElementById("cring");
-let mx=innerWidth/2, my=innerHeight/2, dx=mx, dy=my, rx=mx, ry=my;
-document.addEventListener("mousemove", e => { mx=e.clientX; my=e.clientY; });
-document.addEventListener("mousedown", () => cdot.style.transform="translate(-50%,-50%) scale(.55)");
+document.addEventListener("mousemove", e => {
+  gsap.set(cdot, {x: e.clientX, y: e.clientY});
+  addRipple(e.clientX, e.clientY);
+}, {passive:true});
+document.addEventListener("mousedown", () => cdot.style.transform="translate(-50%,-50%) scale(.6)");
 document.addEventListener("mouseup",   () => cdot.style.transform="translate(-50%,-50%) scale(1)");
-document.querySelectorAll("a,button,.offer-card,.proj-item,.proj-tag,.lang-btn").forEach(el => {
-  el.addEventListener("mouseenter", () => cring.classList.add("h"));
-  el.addEventListener("mouseleave", () => cring.classList.remove("h"));
-});
-(function loop(){
-  dx += (mx-dx)*.16; dy += (my-dy)*.16;
-  rx += (mx-rx)*.08; ry += (my-ry)*.08;
-  gsap.set(cdot,{x:dx,y:dy}); gsap.set(cring,{x:rx,y:ry});
-  requestAnimationFrame(loop);
-})();
-const ftObs = new IntersectionObserver(es =>
-  document.body.classList.toggle("on-dark", es[0].isIntersecting), {threshold:.3}
-);
-ftObs.observe(document.getElementById("contact"));
 
 /* ══════════════════════════════════════════
-   HEADER SCROLL
+   WATER RIPPLE CANVAS
 ══════════════════════════════════════════ */
-window.addEventListener("scroll", () =>
-  document.getElementById("hdr").style.boxShadow =
-    scrollY > 20 ? "0 1px 20px rgba(0,0,0,.07)" : "none"
-, {passive:true});
+(function(){
+  const canvas = document.getElementById("ripple-canvas");
+  if(!canvas) return;
+  const ctx = canvas.getContext("2d");
+  let W = canvas.width  = window.innerWidth;
+  let H = canvas.height = window.innerHeight;
+  window.addEventListener("resize", () => {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }, {passive:true});
+
+  const ripples = [];
+  const COLS = ["232,131,106","242,164,142","248,195,180","220,100,75","255,165,130"];
+  let lastX = -999, lastY = -999;
+
+  window.addRipple = function(x, y) {
+    const dx = x - lastX, dy = y - lastY;
+    if(dx*dx + dy*dy < 16) return;
+    lastX = x; lastY = y;
+    const col = COLS[Math.floor(Math.random() * COLS.length)];
+    ripples.push({x, y,
+      r: Math.random() * 4 + 1,
+      maxR: Math.random() * 90 + 40,
+      alpha: Math.random() * 0.18 + 0.08,
+      speed: Math.random() * 1.8 + 0.8,
+      lw: Math.random() * 1.2 + 0.4, col});
+    if(Math.random() > 0.5) {
+      ripples.push({x: x+(Math.random()-.5)*10, y: y+(Math.random()-.5)*10,
+        r: 1, maxR: Math.random()*45+15,
+        alpha: Math.random()*0.1+0.04,
+        speed: Math.random()*2.5+1.2,
+        lw: 0.5, col: COLS[Math.floor(Math.random()*COLS.length)]});
+    }
+    if(ripples.length > 55) ripples.splice(0, ripples.length - 55);
+  };
+
+  (function draw(){
+    ctx.clearRect(0, 0, W, H);
+    for(let i = ripples.length-1; i >= 0; i--) {
+      const rp = ripples[i];
+      rp.r += rp.speed;
+      rp.alpha -= 0.003;
+      if(rp.alpha <= 0 || rp.r > rp.maxR){ ripples.splice(i,1); continue; }
+      const a = rp.alpha * (1 - rp.r/rp.maxR * 0.7);
+      ctx.beginPath();
+      ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI*2);
+      ctx.strokeStyle = "rgba("+rp.col+","+a.toFixed(3)+")";
+      ctx.lineWidth = rp.lw * (1 - rp.r/rp.maxR*0.5);
+      ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
 
 /* ══════════════════════════════════════════
    HERO ENTRANCE
