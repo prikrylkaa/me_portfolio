@@ -46,10 +46,10 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 /* HERO */
 .hero{position:relative;min-height:100vh;display:grid;grid-template-rows:1fr auto;overflow:hidden;
   background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:96px 96px;background-position:center}
-.hero__name{align-self:end;position:relative;line-height:.82;letter-spacing:-.05em;font-weight:900;font-size:clamp(88px,19vw,320px);text-transform:uppercase;padding-top:22vh;user-select:none}
+.hero__name{align-self:end;position:relative;line-height:.82;letter-spacing:-.05em;font-weight:900;font-size:clamp(88px,17vw,300px);text-transform:uppercase;padding-top:22vh;user-select:none;text-align:center}
 .hero__name span{display:block}
-.hero__name .last{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.02em;font-size:1.1em;margin-top:-.02em;padding-left:.1em}
-.hero__photo{position:absolute;right:clamp(20px,6vw,120px);bottom:0;width:clamp(240px,30vw,480px);aspect-ratio:3/4;background:var(--accent);z-index:2;overflow:hidden}
+.hero__name .last{font-family:var(--serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.02em;font-size:1.1em;margin-top:-.02em}
+.hero__photo{position:absolute;left:50%;transform:translateX(calc(-50% + clamp(200px,19vw,380px)));bottom:0;width:clamp(240px,30vw,480px);aspect-ratio:3/4;background:var(--accent);z-index:2;overflow:hidden}
 .hero__photo img{width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:normal}
 .hero__badge{position:absolute;left:-48px;top:32px;width:120px;height:120px;z-index:3;animation:spin 18s linear infinite}
 .hero__badge text{font-family:var(--mono);font-size:9.5px;letter-spacing:.28em;fill:var(--ink)}
@@ -179,10 +179,14 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .foot__note a{text-decoration:underline}
 
 /* RESPONSIVE */
+@media (max-width:1600px){
+  .hero__name{font-size:clamp(80px,13.5vw,210px)}
+  .hero__photo{width:clamp(220px,26vw,400px);transform:translateX(calc(-50% + clamp(170px,17vw,320px)))}
+}
 @media (max-width:900px){
   .nav__links{display:none}
   .hero__name{font-size:clamp(64px,22vw,140px);padding-top:26vh}
-  .hero__photo{width:48vw;right:16px}
+  .hero__photo{width:48vw;left:auto;right:16px;transform:none}
   .hero__badge{left:-32px;top:16px;width:88px;height:88px}
   .hero__bar{flex-direction:column;align-items:flex-start;gap:24px}
   .summary,.think,.about{grid-template-columns:1fr}
@@ -392,7 +396,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 
 <!-- EXPERIENCE -->
 <section class="exp wrap" id="experience">
-  <div class="sec-head"><h2 class="sec-title" data-t="sec.exp2">Zkuše<em>nosti</em></h2><span class="eyebrow">6 roles · 2018 — now</span></div>
+  <div class="sec-head"><h2 class="sec-title" data-t="sec.exp2">Zkušenosti</h2><span class="eyebrow">6 roles · 2018 — now</span></div>
   <table class="reveal">
     <thead><tr><th data-t="exp.col1">Role a firma</th><th data-t="exp.col2">Období</th><th data-t="exp.col3">Tým</th><th style="text-align:right" data-t="exp.col4">Délka</th></tr></thead>
     <tbody>
@@ -575,7 +579,7 @@ const TRANS = {
 Object.assign(TRANS.en,{
   "hero.claim":"<strong>Product & UX Designer</strong> based in Ostrava. I design digital products that look good and feel effortless to use.",
   "hero.sub2":"I design for people, not for systems. <span class=\"faint\">Media read by millions, e-commerce apps and a gaming platform — always products for end users, where first impressions and simplicity decide.</span>",
-  "sec.offer2":"What I <em>bring</em>","sec.work2":"Selected <em>work</em>","sec.exp2":"Experi<em>ence</em>","sec.think2":"Design <em>thinking</em>","sec.about2":"Abo<em>ut</em>",
+  "sec.offer2":"What I <em>bring</em>","sec.work2":"Selected <em>work</em>","sec.exp2":"Experience","sec.think2":"Design <em>thinking</em>","sec.about2":"About",
   "csb.lbl":"Featured case study","csb.btn2":"View case study →",
   "csb.desc":"How I turned raw match data into dashboards competitive gamers actually use — from first wireframes to a mature product.",
   "ft.note":"This site was built with <a href=\"https://claude.ai\" target=\"_blank\" rel=\"noopener\">Claude AI</a> by Anthropic — design, code and MCP → Figma workflow included. And we're not ashamed of it."
@@ -583,7 +587,7 @@ Object.assign(TRANS.en,{
 Object.assign(TRANS.cz,{
   "hero.claim":"<strong>Product & UX Designérka</strong> z Ostravy. Navrhuji digitální produkty, které jsou hezké na pohled a jednoduché na používání.",
   "hero.sub2":"Navrhuji pro lidi, ne pro systémy. <span class=\"faint\">Média s miliony čtenářů, e-commerce aplikace i herní platforma — vždy produkty pro koncové uživatele, kde rozhoduje první dojem a jednoduchost.</span>",
-  "sec.offer2":"Co vám <em>přinesu</em>","sec.work2":"Vybrané <em>projekty</em>","sec.exp2":"Zkuše<em>nosti</em>","sec.think2":"Design <em>thinking</em>","sec.about2":"O <em>mně</em>",
+  "sec.offer2":"Co vám <em>přinesu</em>","sec.work2":"Vybrané <em>projekty</em>","sec.exp2":"Zkušenosti","sec.think2":"Design <em>thinking</em>","sec.about2":"O <em>mně</em>",
   "csb.lbl":"Case study","csb.btn2":"Zobrazit case study →",
   "csb.desc":"Jak jsem ze surových herních dat udělala dashboardy, které hráči opravdu používají — od prvních wireframů po zralý produkt.",
   "ft.note":"Tato stránka vznikla s <a href=\"https://claude.ai\" target=\"_blank\" rel=\"noopener\">Claude AI</a> od Anthropic — včetně návrhu, kódu i MCP → Figma workflow. A nestydíme se za to."
