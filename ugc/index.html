@@ -21,7 +21,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOSIgZmlsbD0iI0ZGRDg0RCIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMTYxMTFGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MUDwvdGV4dD48L3N2Zz4="/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@1&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet"/>
 
 <!--
   ══════════════════════════════════════════════════════════════
@@ -33,13 +33,13 @@
 
 <style>
 :root{
-  --yellow:#FFD23F;
-  --pink:#FF3DBE;
-  --pinkhi:#FF7AD1;
-  --blue:#3D4FF5;
-  --lav:#EDE9FB;
-  --ink:#14101E;
-  --paper:#FFFBEF;
+  --yellow:#F3E7D3;
+  --pink:#C96F4A;
+  --pinkhi:#F0D3C0;
+  --blue:#453B30;
+  --lav:#F0EAE0;
+  --ink:#2B2318;
+  --paper:#FAF7F1;
   --ease:cubic-bezier(.22,.8,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -199,6 +199,50 @@ a.k-i:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
   .js .rv{opacity:1;transform:none}
   .fact:nth-child(odd),.fact:nth-child(even),.hero-photo{transform:none}
 }
+
+/* ── soft aesthetic overrides ───────────────── */
+body{font-size:16.5px}
+.btn{border-width:2px;box-shadow:0 8px 20px rgba(43,35,24,.14)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(43,35,24,.18)}
+.hero-photo{transform:rotate(1deg)}
+.hero-photo img{border-width:2px;box-shadow:12px 12px 0 var(--pinkhi)}
+.fact{border-width:2px;box-shadow:5px 5px 0 var(--pinkhi)}
+.ph{border-width:2px;box-shadow:0 14px 34px rgba(20,15,8,.28)}
+.ph:hover{box-shadow:0 20px 44px rgba(20,15,8,.34)}
+.fmt-i{border-width:2px;box-shadow:6px 6px 0 var(--pinkhi)}
+.fmt-i:hover{box-shadow:3px 3px 0 var(--pinkhi)}
+.chip{border-width:1.5px;box-shadow:none;background:var(--paper)}
+.shots img{border-width:2px;box-shadow:10px 10px 0 var(--pinkhi)}
+.shots .row img:last-child{box-shadow:10px 10px 0 var(--lav)}
+a.k-i{border-width:2px;box-shadow:5px 5px 0 rgba(43,35,24,.10)}
+a.k-i:hover{box-shadow:2px 2px 0 rgba(43,35,24,.12)}
+#kontakt{background:var(--pinkhi)}
+.sec-note{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:19px;letter-spacing:.01em}
+mark{border-radius:6px}
+/* ── serif display ─────────────────────────── */
+.disp{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em}
+.sec-t mark,.hero h1 mark{font-style:italic;font-weight:500}
+.nav-mark{font-family:'Fraunces',Georgia,serif;font-weight:600}
+.price-c .p-t,.price-c .p-p{font-family:'Fraunces',Georgia,serif;font-weight:600}
+.step::before{font-family:'Fraunces',Georgia,serif;font-weight:600}
+/* ── ceník ─────────────────────────────────── */
+#cenik{background:var(--paper)}
+.price-note{max-width:640px;margin:-26px 0 44px;font-size:16px;color:rgba(43,35,24,.75)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:52px}
+.price-c{background:#fff;border:2px solid var(--ink);border-radius:22px;padding:28px 26px;box-shadow:6px 6px 0 var(--pinkhi)}
+.price-c.hl{background:var(--lav)}
+.price-c .p-t{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;margin-bottom:4px}
+.price-c .p-s{font-size:13px;color:rgba(43,35,24,.65);margin-bottom:14px}
+.price-c .p-p{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;margin-bottom:14px}
+.price-c .p-p small{font-size:14px;font-weight:600;color:rgba(43,35,24,.6)}
+.price-c ul{list-style:none;font-size:14.5px;display:grid;gap:7px}
+.price-c ul li::before{content:"✦";color:var(--pink);margin-right:8px;font-size:11px}
+.price-tbl{width:100%;border-collapse:collapse;background:#fff;border:2px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:6px 6px 0 var(--pinkhi)}
+.price-tbl th{font-size:11px;letter-spacing:.15em;text-transform:uppercase;text-align:left;padding:16px 22px;background:var(--lav);color:var(--pink);font-weight:700}
+.price-tbl td{padding:13px 22px;border-top:1.5px solid var(--lav);font-size:15px}
+.price-tbl td:last-child{text-align:right;font-weight:700;white-space:nowrap}
+.price-lic{margin-top:22px;font-size:14px;color:rgba(43,35,24,.7);max-width:720px}
+@media(max-width:860px){.price-grid{grid-template-columns:1fr}.price-tbl td{padding:11px 14px;font-size:14px}}
 </style>
 </head>
 <body>
@@ -211,6 +255,7 @@ a.k-i:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
       <a href="#formaty">Formáty</a>
       <a href="#design">Design</a>
       <a href="#spoluprace">Spolupráce</a>
+      <a href="#cenik">Ceník</a>
       <a href="#kontakt">Kontakt</a>
     </div>
   </div>
@@ -225,7 +270,7 @@ a.k-i:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
       <h1 class="disp">Točím <mark>UGC</mark>,<br/>které vypadá jako<br/>doporučení. Ne reklama.</h1>
       <p class="hero-body">
         Scénář, natočení, střih i titulky — všechno dělám sama a dodávám video
-        <strong>připravené k nahrání</strong>. Jsem z Ostravy — točím tady i remote pro značky z celého Česka a Slovenska. A protože se sedm let živím jako
+        <strong>připravené k nahrání</strong>. Jsem z Ostravy — točím tady i remote pro značky z celého Česka a Slovenska. V UGC jsem na začátku cesty — portfolio si teprve stavím, a právě proto dostane každé video víc péče, než je zdravé. A protože se sedm let živím jako
         <strong>produktová designérka</strong>, vím, co se s videem děje potom:
         kam vede, na jakou stránku dopadne a proč tam člověk klikne, nebo odejde.
       </p>
@@ -240,13 +285,7 @@ a.k-i:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
     </div>
   </div>
 
-  <dl class="facts rv">
-    <div class="fact"><dt>Formát</dt><dd>9:16 · TikTok / Reels</dd></div>
-    <div class="fact"><dt>Jazyk</dt><dd>Čeština / slovenština</dd></div>
-    <div class="fact"><dt>Dodání</dt><dd>Video ready-to-post</dd></div>
-    <div class="fact"><dt>Zázemí</dt><dd>7 let v product designu</dd></div>
-  </dl>
-</div>
+  </div>
 </header>
 
 <div class="mq" aria-hidden="true">
@@ -440,6 +479,69 @@ a.k-i:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
       </div>
     </div>
   </div>
+</section>
+
+<!-- ══ CENÍK ═════════════════════════════════ -->
+<section id="cenik">
+<div class="wrap">
+  <div class="sec-head">
+    <h2 class="sec-t disp">Kolik to <mark>stojí</mark></h2>
+    <p class="sec-note">Jsem na začátku — ceny držím jednoduché a férové.</p>
+  </div>
+  <p class="price-note rv">Tohle je výchozí bod, ne ceník vytesaný do kamene. Finální cenu vždy potvrdíme podle briefu — a když si nebudete jistí, co potřebujete, poradím vám, ať neplatíte za licence, které nevyužijete.</p>
+
+  <div class="price-grid">
+    <div class="price-c rv">
+      <div class="p-t">Základní video</div>
+      <div class="p-s">15–30 s · jeden produkt, jedna lokace</div>
+      <div class="p-p">3 500 Kč</div>
+      <ul>
+        <li>Scénář + hook</li>
+        <li>Natočení a střih</li>
+        <li>Titulky v ceně</li>
+        <li>1 kolo revizí</li>
+        <li>Video 9:16 ready-to-post</li>
+      </ul>
+    </div>
+    <div class="price-c rv">
+      <div class="p-t">Delší video</div>
+      <div class="p-s">45–60 s · více scén nebo lokací</div>
+      <div class="p-p">5 000 – 7 000 Kč</div>
+      <ul>
+        <li>Vše ze základního videa</li>
+        <li>Složitější scénář a střih</li>
+        <li>Vhodné pro try-on, recepty, vlogy</li>
+      </ul>
+    </div>
+    <div class="price-c hl rv">
+      <div class="p-t">Pravidelná spolupráce</div>
+      <div class="p-s">měsíční balíčky · fakturace měsíčně, splatnost 14 dní</div>
+      <div class="p-p">4 videa <small>/ 20 000 Kč</small></div>
+      <div class="p-p">8 videí <small>/ 36 000 Kč</small></div>
+      <ul>
+        <li>Konzistentní styl i tempo</li>
+        <li>Priorita v kalendáři</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="price-tbl rv">
+    <thead><tr><th>Příplatky a licence</th><th>Cena</th></tr></thead>
+    <tbody>
+      <tr><td>Výhradní licence (video používáte jen vy)</td><td>+25–40 %</td></tr>
+      <tr><td>Použití v placené reklamě (Meta, TikTok)</td><td>+30–50 %</td></tr>
+      <tr><td>Neomezená doba licence</td><td>+50–100 %</td></tr>
+      <tr><td>Whitelisting / spark ads pod mým profilem</td><td>+50–100 %</td></tr>
+      <tr><td>Worldwide užití</td><td>+20–30 %</td></tr>
+      <tr><td>Kategorijní exkluzivita (6 měsíců)</td><td>3 000 – 8 000 Kč/měs.</td></tr>
+      <tr><td>Extra hook varianta (stejné video, jiný začátek)</td><td>600 – 1 000 Kč</td></tr>
+      <tr><td>RAW / zdrojové záběry</td><td>+30–50 %</td></tr>
+      <tr><td>Express dodání do 48 h</td><td>+30 %</td></tr>
+      <tr><td>Další kolo revizí</td><td>500 – 800 Kč</td></tr>
+    </tbody>
+  </table>
+  <p class="price-lic rv">Základní cena zahrnuje nevýhradní licenci pro vlastní kanály a web klienta na 12 měsíců, území ČR/SK. Video si nechávám do portfolia — pokud potřebujete jinak, vyřešíme to výhradní licencí.</p>
+</div>
 </section>
 
 <!-- ══ KONTAKT ═══════════════════════════════ -->
