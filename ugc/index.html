@@ -115,7 +115,9 @@ strong{font-weight:600}
 .design-logos{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 32px}
 .chip{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--ink)}
 .shots{display:grid;gap:16px}
-.shots img{border-radius:4px;border:1px solid var(--line)}
+.shots img{border-radius:4px;border:1px solid var(--line);width:100%;object-fit:cover}
+.shots>img{aspect-ratio:16/10}
+.shots .row img{aspect-ratio:4/3}
 .shots .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 /* ── spolupráce ───────────────────────────── */
@@ -150,7 +152,7 @@ strong{font-weight:600}
 a.k-i{padding:24px;text-decoration:none;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transition:background .25s}
 a.k-i:hover{background:var(--paper2)}
 .k-i dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:8px}
-.k-i dd{font-size:15px;font-weight:500;word-break:break-word}
+.k-i dd{font-size:15px;font-weight:500;word-break:break-all;overflow-wrap:anywhere}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:88px;padding:28px 0 8px;font-size:13px;color:var(--muted)}
 .foot a{font-weight:500;color:var(--ink)}
 
@@ -161,7 +163,8 @@ a.k-i:hover{background:var(--paper2)}
 /* ── responsive ───────────────────────────── */
 @media(max-width:960px){
   .nav-in{padding:0 20px;height:58px}
-  .nav-links{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  .nav-links{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;min-width:0;flex:1;justify-content:flex-end;scrollbar-width:none}
+  .nav-links::-webkit-scrollbar{display:none}
   .wrap{padding:0 20px}
   .hero{padding-top:128px}
   .hero-grid{grid-template-columns:1fr;gap:40px}
@@ -187,6 +190,118 @@ a.k-i:hover{background:var(--paper2)}
   *{animation:none!important;transition-duration:.01ms!important}
   .js .rv{opacity:1;transform:none}
 }
+
+/* ── editorial layer ─────────────────────── */
+.wrap{max-width:1520px;padding:0 56px}
+.nav-in{max-width:1520px;padding:0 56px}
+body{counter-reset:sec}
+section{counter-increment:sec}
+.sec-head{display:grid;grid-template-columns:120px 1fr;gap:32px;align-items:end;max-width:none;margin-bottom:64px;padding-top:6px}
+.sec-head::before{content:counter(sec,decimal-leading-zero);font-family:'Instrument Serif',Georgia,serif;font-size:15px;color:var(--muted);letter-spacing:.12em;padding-bottom:10px;border-bottom:1px solid var(--ink);align-self:start}
+.sec-head>h2,.sec-head>p{grid-column:2}
+.sec-t{font-size:clamp(44px,5.6vw,84px);letter-spacing:-.015em;line-height:.98}
+.sec-note{font-size:17px;max-width:600px}
+.hero{padding:150px 0 72px;border-bottom:1px solid var(--line)}
+.hero-grid{grid-template-columns:1.55fr 1fr;gap:80px;align-items:end;border-top:1px solid var(--line);padding-top:40px}
+.hero h1{font-size:clamp(56px,8.4vw,132px);max-width:none;letter-spacing:-.02em;line-height:.94;margin-bottom:56px}
+.hero h1 mark{font-style:italic;font-weight:400}
+.hero-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1000px;margin-bottom:36px}
+.hero-sub{font-size:27px;max-width:none;margin-bottom:0}
+.hero-body{max-width:none}
+.hero-photo{justify-self:end;width:100%;max-width:400px}
+.hero-photo img{aspect-ratio:4/5;object-fit:cover;width:100%;border-radius:2px}
+.hero-photo::after{content:"";position:absolute;inset:14px;border:1px solid rgba(244,241,235,.55);pointer-events:none;border-radius:1px}
+.hero-tag{left:auto;right:16px;bottom:16px;background:var(--ink);color:var(--paper)}
+
+/* ticker */
+.ticker{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line);padding:18px 0}
+.ticker span{display:inline-block;font-family:'Instrument Serif',Georgia,serif;font-size:30px;letter-spacing:.01em;animation:tick 40s linear infinite;padding-right:0}
+.ticker i{font-style:italic;color:var(--muted);margin:0 22px}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{margin:56px 0 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:0}
+.stat{padding:30px 28px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat b{display:block;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(40px,4vw,60px);line-height:1;margin-bottom:10px}
+.stat b i{font-style:italic;color:var(--muted)}
+.stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* videa */
+.reels{grid-template-columns:repeat(6,1fr);gap:22px}
+#videa .sec-head{grid-template-columns:120px 1fr auto}
+.sec-head .sec-link{grid-column:3;align-self:end;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;white-space:nowrap}
+.reel-meta{display:block}
+.reel-brand::before{content:counter(reel,decimal-leading-zero) "  ";font-family:'Instrument Serif',Georgia,serif;color:var(--muted);font-size:13px;letter-spacing:.08em}
+.reels{counter-reset:reel}
+.reel{counter-increment:reel}
+
+/* formaty */
+.fmt-i{position:relative;padding:34px 30px 32px;min-height:220px}
+.fmt-i::after{counter-increment:fmt;content:counter(fmt,decimal-leading-zero);position:absolute;right:26px;top:26px;font-family:'Instrument Serif',Georgia,serif;font-size:15px;color:var(--muted);letter-spacing:.1em}
+.fmt{counter-reset:fmt}
+.fmt-i h3{font-size:30px}
+
+/* o mne */
+.design-grid{grid-template-columns:1.1fr 1fr;gap:96px}
+.design-txt p:first-child{font-family:'Instrument Serif',Georgia,serif;font-size:28px;line-height:1.3;color:var(--ink);margin-bottom:28px}
+.design-txt p:first-child strong{font-style:italic;font-weight:400}
+.design-txt p.quote{margin:44px 0 0;padding:36px 0;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(26px,2.6vw,38px);line-height:1.25}
+.quote::before{content:"„";color:var(--muted)}
+.quote::after{content:"“";color:var(--muted)}
+.shots{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px}
+.shots>img{grid-column:1/-1}
+.shots .row{grid-column:1/-1}
+
+/* spoluprace */
+.offer{max-width:none;display:grid;grid-template-columns:120px 1fr;gap:32px}
+.steps{grid-column:2;display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.step{display:block;padding:30px 28px 34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:260px}
+.step::before{display:block;font-size:44px;margin-bottom:26px;color:var(--ink)}
+.step h3{font-size:26px}
+
+/* cenik */
+#cenik .wrap>*:not(.sec-head){margin-left:152px}
+#cenik .price-tbl{width:calc(100% - 152px)}
+.price-grid{grid-template-columns:1fr 1fr;margin:44px 0 24px}
+.price-lic-2{margin-top:0;margin-bottom:56px}
+.price-c .p-p{font-size:clamp(34px,3.2vw,48px)}
+
+/* kontakt */
+#kontakt{padding-bottom:0}
+.k-big{display:block;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(34px,5.4vw,84px);line-height:1;letter-spacing:-.02em;text-decoration:none;margin:12px 0 56px;word-break:break-word}
+.k-big:hover{font-style:italic}
+.k-grid{margin-top:0;grid-template-columns:repeat(4,1fr)}
+.foot{margin-top:0;padding:26px 0 30px;border-top:0}
+.foot-band{border-top:1px solid var(--line);margin-top:72px}
+
+@media(max-width:1180px){
+  .reels{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:960px){
+  .wrap,.nav-in{padding:0 24px}
+  .sec-head,.offer{grid-template-columns:1fr;gap:16px}
+  .sec-head::before{width:64px}
+  .sec-head>h2,.sec-head>p,.steps{grid-column:1}
+  #videa .sec-head{grid-template-columns:1fr}
+  .sec-head .sec-link{grid-column:1;justify-self:start}
+  #cenik .wrap>*:not(.sec-head){margin-left:0}
+  #cenik .price-tbl{width:100%}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-cols{grid-template-columns:1fr}
+  .hero-photo{justify-self:start;max-width:380px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .design-grid{gap:48px}
+}
+@media(max-width:520px){
+  .reels{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .k-grid{grid-template-columns:1fr}
+  a.k-i{min-width:0}
+  .ticker span{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){.ticker span{animation:none}}
 </style>
 </head>
 <body>
@@ -209,20 +324,24 @@ a.k-i:hover{background:var(--paper2)}
 <!-- ══ HERO ══════════════════════════════════ -->
 <header class="hero" id="top">
 <div class="wrap">
+  <span class="eyebrow"><span class="dot"></span>UGC · Content creator</span>
+  <h1 class="disp">Přirozený <mark>content</mark> pro značky, které chtějí být vidět.</h1>
   <div class="hero-grid">
     <div>
-      <span class="eyebrow"><span class="dot"></span>UGC · Content creator</span>
-      <h1 class="disp">Přirozený <mark>content</mark><br/>pro značky, které<br/>chtějí být vidět.</h1>
-      <p class="hero-sub">Tvořím lifestyle a product content pro značky, které chtějí působit <strong>důvěryhodně, esteticky a lidsky</strong>.</p>
-      <p class="hero-body">
-        Scénář, natáčení, střih i titulky řeším sama a dodávám video
-        <strong>připravené k publikaci</strong>. Jsem z Ostravy, točím remote pro celé Česko i Slovensko.
-      </p>
-      <p class="hero-body hero-cred">
-        Blízko mám k technologiím, designu, každodennímu lifestyle i kvalitnímu jídlu.
-        Díky backgroundu v <strong>produktovém designu</strong> přemýšlím nad obsahem nejen vizuálně,
-        ale i v kontextu značky a zákazníka.
-      </p>
+      <div class="hero-cols">
+        <p class="hero-sub">Tvořím lifestyle a product content pro značky, které chtějí působit <strong>důvěryhodně, esteticky a lidsky</strong>.</p>
+        <div>
+          <p class="hero-body">
+            Scénář, natáčení, střih i titulky řeším sama a dodávám video
+            <strong>připravené k publikaci</strong>. Jsem z Ostravy, točím remote pro celé Česko i Slovensko.
+          </p>
+          <p class="hero-body hero-cred">
+            Blízko mám k technologiím, designu, každodennímu lifestyle i kvalitnímu jídlu.
+            Díky backgroundu v <strong>produktovém designu</strong> přemýšlím nad obsahem nejen vizuálně,
+            ale i v kontextu značky a zákazníka.
+          </p>
+        </div>
+      </div>
       <div class="hero-cta">
         <a class="btn btn-y" href="#videa">Ukázky videí ↓</a>
         <a class="btn btn-o" href="#kontakt">Napsat mi</a>
@@ -237,12 +356,26 @@ a.k-i:hover{background:var(--paper2)}
   </div>
 </header>
 
+<div class="ticker" aria-hidden="true">
+  <span>Lifestyle <i>·</i> Product <i>·</i> Tech <i>·</i> Food <i>·</i> Wellness <i>·</i> Travel <i>·</i> Design <i>·</i> Lifestyle <i>·</i> Product <i>·</i> Tech <i>·</i> Food <i>·</i> Wellness <i>·</i> Travel <i>·</i> Design <i>·</i> </span>
+</div>
+
+<div class="wrap" style="padding-top:0">
+  <div class="stats rv">
+    <div class="stat"><b>9<i>:</i>16</b><span>Vertikální formát · TikTok, Reels</span></div>
+    <div class="stat"><b>CZ <i>/</i> SK</b><span>Česky i slovensky</span></div>
+    <div class="stat"><b>1<i>×</i></b><span>Jedno kolo revizí v ceně</span></div>
+    <div class="stat"><b>&lt;14<i>d</i></b><span>Od briefu k hotovému videu</span></div>
+  </div>
+</div>
+
 <!-- ══ VIDEA ═════════════════════════════════ -->
 <section id="videa">
 <div class="wrap">
   <div class="sec-head">
     <h2 class="sec-t disp">Ukázky <mark>z TikToku</mark></h2>
     <p class="sec-note">Všechno od scénáře po export moje práce. Klikni a video se otevře přímo na TikToku.</p>
+    <a class="sec-link" href="https://www.tiktok.com/@luciepavlikovaa" target="_blank" rel="noopener">Celý profil ↗</a>
   </div>
 
   <div class="reels">
@@ -388,10 +521,6 @@ a.k-i:hover{background:var(--paper2)}
         ty malé everyday věci, které dělají život hezčí. Přesně z toho přirozeně vychází i můj
         content — nejbližší jsou mi <strong>tech, lifestyle, food, wellness a designové produkty</strong>.
       </p>
-      <p>
-        Mám ráda čistou estetiku, přirozenost a věci, které mají kvalitu i smysl.
-        A stejně přistupuju i k tomu, co tvořím.
-      </p>
       <div class="design-logos">
         <span class="chip">Tech girl</span>
         <span class="chip">Product design</span>
@@ -401,6 +530,7 @@ a.k-i:hover{background:var(--paper2)}
         <span class="chip">Travel</span>
       </div>
       <a class="btn btn-o" href="https://luciepavlik.cz" target="_blank" rel="noopener">Design portfolio ↗</a>
+      <p class="quote">Mám ráda čistou estetiku, přirozenost a věci, které mají kvalitu i smysl. A stejně přistupuju i k tomu, co tvořím.</p>
     </div>
     <div class="shots rv">
       <img src="/rankacy.webp" alt="Rankacy AI — Training Zone" loading="lazy"/>
@@ -459,7 +589,7 @@ a.k-i:hover{background:var(--paper2)}
   </table>
   <p class="price-lic rv"><strong>V ceně:</strong> scénář, natočení, střih, jedno kolo revizí, titulky, formát 9:16 a licence pro vlastní kanály klienta na 12 měsíců, CZ/SK, organic.</p>
 
-  <div class="price-grid rv" style="grid-template-columns:1fr 1fr;margin:44px 0 52px">
+  <div class="price-grid rv">
     <div class="price-c">
       <div class="p-t">Rozjezd</div>
       <div class="p-s">2 videa / měsíc · ceníkové ceny, bez objemové slevy</div>
@@ -471,7 +601,7 @@ a.k-i:hover{background:var(--paper2)}
       <div class="p-p">12 600 — 19 800 Kč</div>
     </div>
   </div>
-  <p class="price-lic rv" style="margin-top:-36px;margin-bottom:56px"><strong>Rozpětí, ne pevná cena.</strong> Konečná částka závisí na mixu formátů, který domluvíme na začátku měsíce — spodní hranice odpovídá samým content videím, horní samým delším formátům.</p>
+  <p class="price-lic price-lic-2 rv"><strong>Rozpětí, ne pevná cena.</strong> Konečná částka závisí na mixu formátů, který domluvíme na začátku měsíce — spodní hranice odpovídá samým content videím, horní samým delším formátům.</p>
 
   <table class="price-tbl rv">
     <thead><tr><th>Rozšíření licence — placená reklama (Meta, TikTok)</th><th>Příplatek</th></tr></thead>
@@ -493,6 +623,8 @@ a.k-i:hover{background:var(--paper2)}
     <p class="sec-note">Napište mi produkt a termín — ozvu se do 24 hodin.</p>
   </div>
 
+  <a class="k-big" href="mailto:lucie.pavlikovaa@seznam.cz">lucie.pavlikovaa@seznam.cz</a>
+
   <dl class="k-grid">
     <a class="k-i rv" href="mailto:lucie.pavlikovaa@seznam.cz">
       <dt>E-mail</dt><dd>lucie.pavlikovaa@seznam.cz</dd>
@@ -508,6 +640,9 @@ a.k-i:hover{background:var(--paper2)}
     </a>
   </dl>
 
+  </div>
+<div class="foot-band"><div class="ticker" aria-hidden="true"><span>Pojďme něco natočit <i>·</i> Ostrava <i>·</i> CZ / SK <i>·</i> UGC <i>·</i> Content creator <i>·</i> Pojďme něco natočit <i>·</i> Ostrava <i>·</i> CZ / SK <i>·</i> UGC <i>·</i> Content creator <i>·</i> </span></div></div>
+<div class="wrap">
   <div class="foot">
     <span>© 2026 Lucie Pavlíková · UGC Creator &amp; Product Designer · Ostrava</span>
     <span><a href="https://luciepavlik.cz">luciepavlik.cz</a></span>
