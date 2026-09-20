@@ -238,6 +238,33 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
   .price-tbl td:last-child{font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}.js .rv{opacity:1;transform:none}}
+
+/* ── prodejní vrstva ─────────────────────── */
+.proof{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:26px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.proof span{white-space:nowrap}.proof i{font-style:normal;opacity:.5}
+.reels.reels-5{grid-template-columns:repeat(5,1fr);gap:40px 24px;max-width:none}
+.reels.reels-5 .phone{width:min(100%,240px)}
+.reels.reels-4{grid-template-columns:repeat(4,1fr);gap:36px 24px;max-width:1180px}
+.reels.reels-4 .phone{width:min(100%,220px)}
+.reel-goal{color:var(--ink);margin-top:8px;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:15px}
+.brands{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:64px;padding-top:28px;border-top:1px solid var(--line)}
+.brands span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-right:8px}
+.brands b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.01em}
+.why{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);counter-reset:w}
+.why-i{padding:34px 30px 36px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-i::before{counter-increment:w;content:counter(w,decimal-leading-zero);display:block;font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1;margin-bottom:22px}
+.why-i h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:28px;line-height:1.1;margin-bottom:12px}
+.why-i p{font-size:15px;color:#2C2925}
+.deliv{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:start}
+.deliv-list{list-style:none;border-top:1px solid var(--ink)}
+.deliv-list li{display:grid;grid-template-columns:260px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px}
+.deliv-list b{font-weight:500}
+.deliv-list span{color:var(--muted)}
+.deliv-cta{background:var(--paper2);padding:36px 32px 32px;border-radius:4px;position:sticky;top:84px}
+.deliv-q{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,2.4vw,34px);line-height:1.15;margin-bottom:22px}
+.deliv-note{font-size:13.5px;color:var(--muted);margin-top:16px}
+@media(max-width:1100px){.reels.reels-5{grid-template-columns:repeat(3,1fr)}.reels.reels-4{grid-template-columns:repeat(2,1fr)}.why{grid-template-columns:1fr}.deliv{grid-template-columns:1fr;gap:32px}.deliv-cta{position:static}}
+@media(max-width:620px){.reels.reels-5,.reels.reels-4{grid-template-columns:repeat(2,1fr)}.deliv-list li{grid-template-columns:1fr;gap:4px}.proof{gap:8px 10px;font-size:11px}}
 </style>
 </head>
 <body>
@@ -247,11 +274,12 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
     <a href="#top" class="nav-mark">Lucie <em>Pavlíková</em></a>
     <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     <div class="nav-links" id="menu">
-      <a href="#videa">Videa</a>
-      <a href="#formaty">Formáty</a>
-      <a href="#omne">O mně</a>
       <a href="#spoluprace">Spolupráce</a>
-      <a href="https://www.tiktok.com/@luciepavlikovaa" target="_blank" rel="noopener" class="nav-tt" data-umami-event="tiktok-profile" data-umami-event-place="nav" aria-label="TikTok @luciepavlikovaa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg><span>TikTok</span></a>
+      <a href="#tvorba">Vlastní tvorba</a>
+      <a href="#proc">Proč UGC</a>
+      <a href="#dostanete">Co dostanete</a>
+      <a href="#omne">O mně</a>
+      <a href="https://www.tiktok.com/@luciepavlikovaa" target="_blank" rel="noopener" class="nav-tt" data-umami-event="tiktok-profile" data-umami-event-place="nav" aria-label="TikTok @luciepavlikovaa"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg><span>TikTok</span></a>
       <a href="#kontakt" class="nav-cta">Kontakt</a>
     </div>
   </div>
@@ -265,6 +293,7 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
       <span class="pill"><i>UGC</i> Content creator · Ostrava</span>
       <h1><span class="black">Přirozený</span><mark>content</mark></h1>
       <h2>pro značky, které chtějí být vidět.</h2>
+      <p class="proof"><span>5 realizovaných spoluprací</span><i>✦</i><span>570 tis.+ zhlédnutí</span><i>✦</i><span>Ostrava · CZ/SK remote</span></p>
     </div>
     <div class="hero-photo rv">
       <img src="/portrait.webp" alt="Lucie Pavlíková" width="700"/>
@@ -274,13 +303,13 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
       <div class="hero-txt">
         <p class="hero-sub">Tvořím lifestyle a product content pro značky, které chtějí působit <strong>důvěryhodně, esteticky a lidsky</strong>.</p>
         <div>
-          <p class="hero-body">Scénář, natáčení, střih i titulky řeším sama a dodávám video <strong>připravené k publikaci</strong>. Jsem z Ostravy, točím remote pro celé Česko i Slovensko.</p>
-          <p class="hero-cred">Blízko mám k technologiím, designu, každodennímu lifestyle i kvalitnímu jídlu. Díky backgroundu v produktovém designu přemýšlím nad obsahem nejen vizuálně, ale i v kontextu značky a zákazníka.</p>
+          <p class="hero-body">Scénář, natáčení, střih i titulky řeším sama a dodávám video <strong>připravené k publikaci</strong> — bez produkce, bez koordinace, bez starostí na vaší straně.</p>
+          <p class="hero-cred">Díky backgroundu v produktovém designu přemýšlím nad obsahem nejen vizuálně, ale i v kontextu značky a zákazníka: co má divák udělat po zhlédnutí.</p>
         </div>
       </div>
       <div class="hero-cta">
-        <a class="btn btn-y" href="#videa" data-umami-event="cta-videa">Ukázky videí ↓</a>
-        <a class="btn btn-o" href="#kontakt" data-umami-event="cta-napsat">Napsat mi</a>
+        <a class="btn btn-y" href="#spoluprace" data-umami-event="cta-videa">Ukázky spoluprací ↓</a>
+        <a class="btn btn-o" href="mailto:lucie.pavlikovaa@seznam.cz?subject=UGC%20video%20%E2%80%94%20nez%C3%A1vazn%C3%A1%20nab%C3%ADdka&body=Ahoj%20Lucie%2C%0A%0Aprodukt%20%2F%20zna%C4%8Dka%3A%20%0Ac%C3%ADl%20videa%3A%20%0Aterm%C3%ADn%3A%20%0A%0AD%C3%ADky%21" data-umami-event="cta-nabidka" data-umami-event-place="hero">Chci nezávaznou nabídku</a>
       </div>
     </div>
   </div>
@@ -291,47 +320,139 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
   <span>Lifestyle <i>✦</i> <em>Product</em> <i>✦</i> Tech <i>✦</i> <em>Food</em> <i>✦</i> Wellness <i>✦</i> <em>Travel</em> <i>✦</i> Design <i>✦</i> Lifestyle <i>✦</i> <em>Product</em> <i>✦</i> Tech <i>✦</i> <em>Food</em> <i>✦</i> Wellness <i>✦</i> <em>Travel</em> <i>✦</i> Design <i>✦</i> </span>
 </div>
 
-<!-- ══ VIDEA ═════════════════════════════════ -->
-<section id="videa">
+<!-- ══ SPOLUPRÁCE ════════════════════════════ -->
+<section id="spoluprace">
 <div class="wrap">
   <div class="sec-head">
     <div>
-      <span class="pill"><i>01</i> Videa</span>
-      <h2 class="sec-t">Ukázky <mark>z TikToku</mark></h2>
-      <p class="sec-note">Všechno od scénáře po export moje práce. Klikni a video se otevře přímo na TikToku.</p>
+      <span class="pill"><i>01</i> Reference</span>
+      <h2 class="sec-t">Realizované <mark>spolupráce</mark></h2>
+      <p class="sec-note">Videa natočená pro značky — od briefu po export moje práce. Klikni a otevře se na TikToku.</p>
     </div>
     <a class="sec-link" href="https://www.tiktok.com/@luciepavlikovaa" target="_blank" rel="noopener" data-umami-event="tiktok-profile" data-umami-event-place="videa">Celý profil ↗</a>
   </div>
-  <div class="reels">
+  <div class="reels reels-5">
     <div class="reel rv">
-      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7597497142395063574" target="_blank" rel="noopener" data-tt="7597497142395063574" data-umami-event="video-click" data-umami-event-video="Vilgain — whole food v Ostravě" aria-label="Otevřít na TikToku: Vilgain — whole food v Ostravě">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7596383820740332822" target="_blank" rel="noopener" data-tt="7596383820740332822" data-umami-event="video-click" data-umami-event-video="dm" aria-label="Otevřít na TikToku: dm">
+        <span class="screen">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="dm — moji oblíbenci" loading="lazy"/>
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>201,1 tis.</span>
+          <span class="dur">1:15</span>
+        </span>
+      </a>
+      <div class="reel-meta">
+        <span class="reel-brand">dm</span>
+        <div class="reel-what">Oblíbené produkty z drogerie v běžném dni</div>
+        <div class="reel-goal">Cíl: zvýšit povědomí o vlastní značce dm</div>
+      </div>
+    </div>
+    <div class="reel rv">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7575504456465321238" target="_blank" rel="noopener" data-tt="7575504456465321238" data-umami-event="video-click" data-umami-event-video="wellness" aria-label="Otevřít na TikToku: wellness">
+        <span class="screen">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="Soukromé wellness v Ostravě" loading="lazy"/>
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>170,6 tis.</span>
+          <span class="dur">0:11</span>
+        </span>
+      </a>
+      <div class="reel-meta">
+        <span class="reel-brand">Wellness</span>
+        <div class="reel-what">Soukromá sauna — „tohle místo“</div>
+        <div class="reel-goal">Cíl: prodej pobytů, lokální dosah</div>
+      </div>
+    </div>
+    <div class="reel rv">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7597497142395063574" target="_blank" rel="noopener" data-tt="7597497142395063574" data-umami-event="video-click" data-umami-event-video="Vilgain" aria-label="Otevřít na TikToku: Vilgain">
         <span class="screen">
           <img src="/vilgain.webp" alt="Vilgain Karolina — vstup do prodejny" loading="lazy"/>
           <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
-          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>35,6 tis.</span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>35,7 tis.</span>
           <span class="dur">0:36</span>
         </span>
       </a>
       <div class="reel-meta">
         <span class="reel-brand">Vilgain</span>
-        <div class="reel-what">Whole food v Ostravě — nová prodejna</div>
+        <div class="reel-what">Otevření prodejny — whole food v Ostravě</div>
+        <div class="reel-goal">Cíl: přivést lidi do nové pobočky</div>
       </div>
     </div>
     <div class="reel rv">
-      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7596383820740332822" target="_blank" rel="noopener" data-tt="7596383820740332822" data-umami-event="video-click" data-umami-event-video="dm — oblíbenci" aria-label="Otevřít na TikToku: dm — oblíbenci">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7529199739833765142" target="_blank" rel="noopener" data-tt="7529199739833765142" data-umami-event="video-click" data-umami-event-video="trhy" aria-label="Otevřít na TikToku: trhy">
         <span class="screen">
-          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="dm — oblíbenci z drogerie" loading="lazy"/>
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="Trhy na nábřeží — nakupovat lokálně" loading="lazy"/>
           <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
-          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>200,4 tis.</span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>25,5 tis.</span>
+          <span class="dur">0:21</span>
         </span>
       </a>
       <div class="reel-meta">
-        <span class="reel-brand">dm</span>
-        <div class="reel-what">DM je láska — moji oblíbenci</div>
+        <span class="reel-brand">Ostravské trhy</span>
+        <div class="reel-what">Nakupovat lokálně od tvůrců a farmářů</div>
+        <div class="reel-goal">Cíl: návštěvnost dalších termínů</div>
       </div>
     </div>
     <div class="reel rv">
-      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7565245907910905110" target="_blank" rel="noopener" data-tt="7565245907910905110" data-umami-event="video-click" data-umami-event-video="domácí kombucha" aria-label="Otevřít na TikToku: domácí kombucha">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7541081299801492758" target="_blank" rel="noopener" data-tt="7541081299801492758" data-umami-event="video-click" data-umami-event-video="TasteTown" aria-label="Otevřít na TikToku: TasteTown">
+        <span class="screen">
+          <img src="/tastetown.webp" alt="TasteTown — oběd v ostravské restauraci" loading="lazy"/>
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>22,2 tis.</span>
+          <span class="dur">0:47</span>
+        </span>
+      </a>
+      <div class="reel-meta">
+        <span class="reel-brand">TasteTown</span>
+        <div class="reel-what">Tip, jak ušetřit v bistrech a restauracích</div>
+        <div class="reel-goal">Cíl: stažení appky</div>
+      </div>
+    </div>
+  </div>
+  <div class="brands rv"><span>Spolupracovala jsem s</span><b>dm</b><b>Vilgain</b><b>TasteTown</b><b>Ostravské trhy</b><b>Wellness Ostrava</b></div>
+</div>
+</section>
+
+<!-- ══ VLASTNÍ TVORBA ════════════════════════ -->
+<section id="tvorba">
+<div class="wrap">
+  <div class="sec-head">
+    <div>
+      <span class="pill"><i>02</i> Organic</span>
+      <h2 class="sec-t">Vlastní <mark>tvorba</mark></h2>
+      <p class="sec-note">Obsah, který točím sama za sebe — ukazuje styl, tempo a to, jak vypadá můj content bez zadání.</p>
+    </div>
+  </div>
+  <div class="reels reels-4">
+    <div class="reel rv">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7537057944249060630" target="_blank" rel="noopener" data-tt="7537057944249060630" data-umami-event="video-click" data-umami-event-video="Strava" aria-label="Otevřít na TikToku: Strava">
+        <span class="screen">
+          <img src="/strava.webp" alt="Strava — safe run" loading="lazy"/>
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>67,8 tis.</span>
+          <span class="dur">1:40</span>
+        </span>
+      </a>
+      <div class="reel-meta">
+        <span class="reel-brand">Sport · Tech</span>
+        <div class="reel-what">Safe run — bezpečnost v běžecké appce</div>
+      </div>
+    </div>
+    <div class="reel rv">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7520340436423150850" target="_blank" rel="noopener" data-tt="7520340436423150850" data-umami-event="video-click" data-umami-event-video="nákupy" aria-label="Otevřít na TikToku: nákupy">
+        <span class="screen">
+          <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="Smart girl choices — nákupy v Polsku" loading="lazy"/>
+          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>34,4 tis.</span>
+          <span class="dur">0:56</span>
+        </span>
+      </a>
+      <div class="reel-meta">
+        <span class="reel-brand">Lifestyle</span>
+        <div class="reel-what">Smart girl choices — tipy na nákupy</div>
+      </div>
+    </div>
+    <div class="reel rv">
+      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7565245907910905110" target="_blank" rel="noopener" data-tt="7565245907910905110" data-umami-event="video-click" data-umami-event-video="kombucha" aria-label="Otevřít na TikToku: kombucha">
         <span class="screen">
           <img src="/kombucha.webp" alt="Domácí kombucha — první pokus" loading="lazy"/>
           <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
@@ -345,39 +466,12 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
       </div>
     </div>
     <div class="reel rv">
-      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7537057944249060630" target="_blank" rel="noopener" data-tt="7537057944249060630" data-umami-event="video-click" data-umami-event-video="Strava — safe run" aria-label="Otevřít na TikToku: Strava — safe run">
-        <span class="screen">
-          <img src="/strava.webp" alt="Strava — safe run" loading="lazy"/>
-          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
-          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>67,7 tis.</span>
-          <span class="dur">1:40</span>
-        </span>
-      </a>
-      <div class="reel-meta">
-        <span class="reel-brand">Strava</span>
-        <div class="reel-what">Safe run — bezpečnost v appce</div>
-      </div>
-    </div>
-    <div class="reel rv">
-      <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7541081299801492758" target="_blank" rel="noopener" data-tt="7541081299801492758" data-umami-event="video-click" data-umami-event-video="TasteTown — jak ušetřit v restauracích" aria-label="Otevřít na TikToku: TasteTown — jak ušetřit v restauracích">
-        <span class="screen">
-          <img src="/tastetown.webp" alt="TasteTown — oběd v ostravské restauraci" loading="lazy"/>
-          <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
-          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>— tis.</span>
-          <span class="dur">0:47</span>
-        </span>
-      </a>
-      <div class="reel-meta">
-        <span class="reel-brand">TasteTown</span>
-        <div class="reel-what">Tip, jak ušetřit v bistrech a restauracích</div>
-      </div>
-    </div>
-    <div class="reel rv">
       <a class="phone" href="https://www.tiktok.com/@luciepavlikovaa/video/7570471551322148118" target="_blank" rel="noopener" data-tt="7570471551322148118" data-umami-event="video-click" data-umami-event-video="small talks" aria-label="Otevřít na TikToku: small talks">
         <span class="screen">
           <img src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 9 19%27%3E%3Crect width=%279%27 height=%2719%27 fill=%27%231d1b18%27/%3E%3C/svg%3E" alt="Small talks — design & IT" loading="lazy"/>
           <span class="play"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 3.4-2.46V9.7a5.71 5.71 0 0 0-.81-.06A5.66 5.66 0 0 0 4.2 15.3a5.66 5.66 0 0 0 5.66 5.66 5.66 5.66 0 0 0 5.66-5.66V9.02a7.35 7.35 0 0 0 4.28 1.37V7.31a4.3 4.3 0 0 1-3.2-1.49z"/></svg></span>
-          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>— tis.</span>
+          <span class="views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>3,7 tis.</span>
+          <span class="dur">0:36</span>
         </span>
       </a>
       <div class="reel-meta">
@@ -389,23 +483,48 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
 </div>
 </section>
 
-<!-- ══ FORMÁTY ═══════════════════════════════ -->
-<section id="formaty">
+<!-- ══ PROČ UGC ══════════════════════════════ -->
+<section id="proc">
 <div class="wrap">
   <div class="sec-head">
     <div>
-      <span class="pill"><i>02</i> Formáty</span>
-      <h2 class="sec-t">Čemu se <mark>věnuji</mark></h2>
-      <p class="sec-note">Točím o tom, čím opravdu žiju — proto to na kameře nepůsobí naučeně.</p>
+      <span class="pill"><i>03</i> Proč</span>
+      <h2 class="sec-t">Proč UGC <mark>ode mě</mark></h2>
+      <p class="sec-note">Tři důvody, které dávají smysl marketérovi, ne jen algoritmu.</p>
     </div>
   </div>
-  <div class="fmt">
-    <div class="fmt-i rv"><span class="pin">Lifestyle</span><h3>Lifestyle &amp; produkty</h3><p>Věci, které používám doma i venku — unboxing, first impression, produkt v akci v reálném životě.</p></div>
-    <div class="fmt-i rv"><span class="pin">Sport</span><h3>Sport &amp; běh</h3><p>Běhám a točím u toho — appky, vybavení, motivace. Girl talk formou tipu, který bych řekla kamarádce.</p></div>
-    <div class="fmt-i rv"><span class="pin">Food</span><h3>Food &amp; podniky</h3><p>Restaurace, kavárny, nové koncepty a otevření prodejen — s lokálním ostravským dosahem.</p></div>
-    <div class="fmt-i rv"><span class="pin">Fashion</span><h3>Fashion &amp; try-on</h3><p>Outfity od hooku po final look. Haul a try-on videa, která lidi dokoukají do konce.</p></div>
-    <div class="fmt-i rv"><span class="pin">Vlog</span><h3>Eventy &amp; vlog</h3><p>„Pojď se mnou na…“ — konference, launche, komunitní akce. Atmosféra sestříhaná do minuty.</p></div>
-    <div class="fmt-i rv"><span class="pin">Tech</span><h3>Appky &amp; technologie</h3><p>Díky designérskému zázemí umím srozumitelně ukázat, co appka umí a proč si ji stáhnout.</p></div>
+  <div class="why">
+    <div class="why-i rv"><h3>Hotové video, ne projekt</h3><p>Scénář, natočení, střih, titulky, export 9:16. Vy pošlete produkt a brief, já pošlu video připravené k nahrání. Bez agentury, bez produkce, bez kolečka schvalování napříč lidmi.</p></div>
+    <div class="why-i rv"><h3>Obsah, který myslí na konverzi</h3><p>Sedm let navrhuju digitální produkty. Vím, kam video vede, na jaké stránce dopadne a co tam rozhoduje. Hook, sdělení i CTA stavím podle toho, co má divák udělat potom — ne podle toho, co zrovna letí.</p></div>
+    <div class="why-i rv"><h3>Lokální dosah, celostátní záběr</h3><p>Ostrava a Moravskoslezský kraj jsou moje domácí publikum — otevření prodejny, podnik nebo akce tu dostanou reálné lidi. Produktová a app videa točím remote pro celé Česko i Slovensko.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ══ CO DOSTANETE ══════════════════════════ -->
+<section id="dostanete">
+<div class="wrap">
+  <div class="sec-head">
+    <div>
+      <span class="pill"><i>04</i> Deliverables</span>
+      <h2 class="sec-t">Co <mark>dostanete</mark></h2>
+      <p class="sec-note">Cena se odvíjí od formátu, náročnosti a rozsahu spolupráce — návrh pošlu do 24 hodin od briefu.</p>
+    </div>
+  </div>
+  <div class="deliv">
+    <ul class="deliv-list rv">
+      <li><b>Scénář ke schválení</b><span>Hook, struktura, CTA. Točím, až když vám sedí.</span></li>
+      <li><b>Natočení a střih</b><span>Vertikální video 9:16 pro TikTok, Reels a Shorts, s titulky.</span></li>
+      <li><b>Jedno kolo revizí v ceně</b><span>Připomínky zapracuju, pak předám finální export.</span></li>
+      <li><b>Licence pro vaše kanály</b><span>12 měsíců organic, CZ/SK. Rozšíření na placenou reklamu na přání.</span></li>
+      <li><b>Volitelně: publikace na mém profilu</b><span>Video jde ven i u mě — s dosahem, který vidíte výše.</span></li>
+      <li><b>Formáty</b><span>Content video 7–12 s · komunikační video s voiceoverem 10–20 s · delší formát 20–50 s · extra hook varianty.</span></li>
+    </ul>
+    <div class="deliv-cta rv">
+      <p class="deliv-q">Máte produkt, podnik nebo appku, o které se má mluvit?</p>
+      <a class="btn btn-y" href="mailto:lucie.pavlikovaa@seznam.cz?subject=UGC%20video%20%E2%80%94%20nez%C3%A1vazn%C3%A1%20nab%C3%ADdka&body=Ahoj%20Lucie%2C%0A%0Aprodukt%20%2F%20zna%C4%8Dka%3A%20%0Ac%C3%ADl%20videa%3A%20%0Aterm%C3%ADn%3A%20%0A%0AD%C3%ADky%21" data-umami-event="cta-nabidka" data-umami-event-place="dostanete">Chci nezávaznou nabídku</a>
+      <p class="deliv-note">Stačí napsat, co to je a kdy to potřebujete. Ozvu se do 24 hodin s návrhem formátu a cenou.</p>
+    </div>
   </div>
 </div>
 </section>
@@ -415,7 +534,7 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
 <div class="wrap">
   <div class="sec-head">
     <div>
-      <span class="pill"><i>03</i> O mně</span>
+      <span class="pill"><i>05</i> O mně</span>
       <h2 class="sec-t">Ahoj, jsem <mark>Lucie</mark>.</h2>
       <p class="sec-note">Produktová designérka a content creator z Ostravy.</p>
     </div>
@@ -437,38 +556,19 @@ a.k-i:hover{background:rgba(244,241,235,.06)}
 </div>
 </section>
 
-<!-- ══ SPOLUPRÁCE ════════════════════════════ -->
-<section id="spoluprace">
-<div class="wrap">
-  <div class="sec-head">
-    <div>
-      <span class="pill"><i>04</i> Spolupráce</span>
-      <h2 class="sec-t">Jak <mark>spolupráce</mark> probíhá</h2>
-      <p class="sec-note">Od zadání k hotovému videu obvykle do dvou týdnů.</p>
-    </div>
-  </div>
-  <div class="steps">
-    <div class="step rv"><h3>Zadání a brief</h3><p>Co je produkt, komu je určený a co má video udělat. Stačí pár vět, na zbytek se doptám.</p></div>
-    <div class="step rv"><h3>Scénář ke schválení</h3><p>Navrhnu hook, strukturu a CTA. Točit začínám, až když sedí vám.</p></div>
-    <div class="step rv"><h3>Natočení a střih</h3><p>Natočím, sestříhám, otitulkuju. Dodám video 9:16 připravené k nahrání.</p></div>
-    <div class="step rv"><h3>Jedno kolo revizí</h3><p>Připomínky zapracuju v ceně. Pak předám finální export i licenci.</p></div>
-  </div>
-</div>
-</section>
-
 <!-- ══ KONTAKT ═══════════════════════════════ -->
 <section id="kontakt">
 <div class="wrap">
   <div class="sec-head">
     <div>
-      <span class="pill"><i>05</i> Kontakt</span>
+      <span class="pill"><i>06</i> Kontakt</span>
       <h2 class="sec-t">Pojďme něco <mark>natočit</mark></h2>
-      <p class="sec-note">Napište mi produkt a termín — ozvu se do 24 hodin.</p>
+      <p class="sec-note">Napište mi produkt a termín — do 24 hodin pošlu návrh formátu a cenu.</p>
     </div>
   </div>
-  <a class="k-big" href="mailto:lucie.pavlikovaa@seznam.cz" data-umami-event="email-click" data-umami-event-place="big">lucie.pavlikovaa@seznam.cz</a>
+  <a class="k-big" href="mailto:lucie.pavlikovaa@seznam.cz?subject=UGC%20video%20%E2%80%94%20nez%C3%A1vazn%C3%A1%20nab%C3%ADdka&body=Ahoj%20Lucie%2C%0A%0Aprodukt%20%2F%20zna%C4%8Dka%3A%20%0Ac%C3%ADl%20videa%3A%20%0Aterm%C3%ADn%3A%20%0A%0AD%C3%ADky%21" data-umami-event="email-click" data-umami-event-place="big">lucie.pavlikovaa@seznam.cz</a>
   <dl class="k-grid">
-    <a class="k-i rv" href="mailto:lucie.pavlikovaa@seznam.cz" data-umami-event="email-click" data-umami-event-place="grid"><dt>E-mail</dt><dd>lucie.pavlikovaa@seznam.cz</dd></a>
+    <a class="k-i rv" href="mailto:lucie.pavlikovaa@seznam.cz?subject=UGC%20video%20%E2%80%94%20nez%C3%A1vazn%C3%A1%20nab%C3%ADdka&body=Ahoj%20Lucie%2C%0A%0Aprodukt%20%2F%20zna%C4%8Dka%3A%20%0Ac%C3%ADl%20videa%3A%20%0Aterm%C3%ADn%3A%20%0A%0AD%C3%ADky%21" data-umami-event="email-click" data-umami-event-place="grid"><dt>E-mail</dt><dd>lucie.pavlikovaa@seznam.cz</dd></a>
     <a class="k-i rv" href="https://www.tiktok.com/@luciepavlikovaa" target="_blank" rel="noopener" data-umami-event="tiktok-profile" data-umami-event-place="kontakt"><dt>TikTok</dt><dd>@luciepavlikovaa</dd></a>
     <a class="k-i rv" href="https://www.instagram.com/luciepavlikovaa/" target="_blank" rel="noopener" data-umami-event="instagram-click"><dt>Instagram</dt><dd>@luciepavlikovaa</dd></a>
     <a class="k-i rv" href="https://linkedin.com/in/lucie-pavlikova" target="_blank" rel="noopener" data-umami-event="linkedin-click"><dt>LinkedIn</dt><dd>Lucie Pavlíková</dd></a>
