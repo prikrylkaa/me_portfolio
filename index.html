@@ -470,6 +470,15 @@ em{font-style:normal}
 @media (prefers-reduced-motion:reduce){
   .ph,.flow__track::after,.flow__return path,.flow__note{transition:none}
 }
+
+/* ===== Rankacy horizontal strip ===== */
+.hstrip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--pad);padding:12px var(--pad) 18px;margin-top:0;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.3) transparent;cursor:grab;outline:none}
+.hstrip:active{cursor:grabbing}
+.hstrip:focus-visible{box-shadow:inset 0 0 0 2px rgba(255,255,255,.4)}
+.hstrip::-webkit-scrollbar{height:6px}.hstrip::-webkit-scrollbar-thumb{background:rgba(255,255,255,.3);border-radius:3px}
+.hs{flex:0 0 calc((100vw - var(--pad) - 24px) / 2.5);aspect-ratio:4/3;scroll-snap-align:start}
+.hs img{pointer-events:none;-webkit-user-drag:none}
+@media (max-width:900px){.hs{flex-basis:80vw}}
 </style>
 </head>
 <body>
@@ -581,9 +590,12 @@ em{font-style:normal}
   </div>
   <div class="cs__gallery g-rank wrap">
     <figure class="g g--full ba rv"><img src="rankacy-pred-po.webp" loading="lazy" alt="Rankacy — původní dashboard a nový redesign"><span class="ba__l" data-t="cs.before">Před</span><span class="ba__r" data-t="cs.after">Po</span></figure>
-    <figure class="g  rv"><img src="306e7325.webp" loading="lazy" alt="Rankacy AI — Training Zone"></figure>
-    <figure class="g  rv"><img src="8186e8a4.webp" loading="lazy" alt="Rankacy AI — porovnání hráčů"></figure>
-    <figure class="g  rv"><img src="6a8b1b14.webp" loading="lazy" alt="Rankacy AI — mobilní aplikace"></figure>
+  </div>
+  <div class="hstrip" data-hstrip tabindex="0" aria-label="Screeny Rankacy AI — posuňte do strany">
+    <figure class="g hs rv"><img src="306e7325.webp" loading="lazy" alt="Rankacy AI — Training Zone"></figure>
+    <figure class="g hs rv"><img src="8186e8a4.webp" loading="lazy" alt="Rankacy AI — porovnání hráčů"></figure>
+    <figure class="g hs rv"><img src="6a8b1b14.webp" loading="lazy" alt="Rankacy AI — mobilní aplikace"></figure>
+    <figure class="g hs rv"><img src="highlights-editor.webp" loading="lazy" alt="Rankacy AI — editor highlightů"></figure>
   </div>
 </article>
 
@@ -969,6 +981,15 @@ function updateProjects(){
   const c=stage.querySelector("[data-count]");if(c)c.textContent=String(best+1).padStart(2,"0");
 }
 
+
+/* horizontal strip: vertical wheel + drag scroll sideways */
+document.querySelectorAll("[data-hstrip]").forEach(s=>{
+  let down=false,x0=0,s0=0,moved=false;
+  s.addEventListener("pointerdown",e=>{if(e.pointerType!=="mouse")return;down=true;moved=false;x0=e.clientX;s0=s.scrollLeft;s.style.scrollSnapType="none";});
+  window.addEventListener("pointermove",e=>{if(!down)return;const d=e.clientX-x0;if(Math.abs(d)>3)moved=true;s.scrollLeft=s0-d;});
+  window.addEventListener("pointerup",()=>{if(!down)return;down=false;s.style.scrollSnapType="";});
+  s.addEventListener("wheel",e=>{if(Math.abs(e.deltaY)<=Math.abs(e.deltaX))return;const max=s.scrollWidth-s.clientWidth;const atStart=s.scrollLeft<=0&&e.deltaY<0,atEnd=s.scrollLeft>=max-1&&e.deltaY>0;if(atStart||atEnd)return;e.preventDefault();s.scrollLeft+=e.deltaY;},{passive:false});
+});
 /* carousels */
 document.querySelectorAll("[data-car]").forEach(c=>{
   const track=c.querySelector(".car__track"),imgs=[...track.children],cnt=c.querySelector(".car__cnt"),cap=c.querySelector(".car__cap");
