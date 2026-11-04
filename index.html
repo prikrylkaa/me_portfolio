@@ -422,6 +422,54 @@ em{font-style:normal}
   .g.rv,.g.rv.in{clip-path:none;transition:none}
   .g img,.g.rv.in img{transform:none;transition:none}
 }
+
+/* ===== process flow ===== */
+.flow{position:relative;max-width:1320px;margin:0 auto;padding-top:clamp(90px,9vw,130px)}
+.flow__track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,2vw,28px);position:relative}
+.flow__track::before{content:"";position:absolute;left:10%;right:10%;top:calc(var(--c) / 2);height:1px;background:var(--faint);--c:clamp(140px,15vw,210px)}
+.flow__track::after{content:"";position:absolute;left:10%;top:calc(var(--c) / 2);height:1px;width:0;background:var(--ink);transition:width 2.2s cubic-bezier(.4,0,.2,1);--c:clamp(140px,15vw,210px)}
+.flow.in .flow__track::after{width:80%}
+.ph{--c:clamp(140px,15vw,210px);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;transition-delay:calc(var(--i) * .25s)}
+.flow.in .ph{opacity:1;transform:none}
+.ph__circle{width:var(--c);height:var(--c);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px;position:relative;z-index:1;background:var(--tint);border:1px solid var(--edge)}
+.ph__n{font-size:clamp(34px,3.6vw,52px);font-weight:600;line-height:1;letter-spacing:-.04em;color:var(--num)}
+.ph__t{font-size:clamp(14px,1.15vw,17px);font-weight:600;letter-spacing:-.01em;line-height:1.2;max-width:12ch;text-wrap:balance}
+.ph--pink{--tint:#FCEFF8;--edge:#E7A6D3;--num:#C2399A}
+.ph--grey{--tint:#EFEFEC;--edge:#C9C9C3;--num:#6E6E68}
+.ph--green{--tint:#EEF6EF;--edge:#9FCBA6;--num:#2E8B44}
+.ph--blue{--tint:#EDF2F8;--edge:#9CB4D3;--num:#2A5591}
+.ph__list{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.ph__list li{font-size:13px;line-height:1.35;color:var(--ink);border:1px dashed var(--edge);border-radius:999px;padding:6px 12px;max-width:100%;text-wrap:balance}
+.ph__tools{margin-top:14px;font-size:12px;color:var(--soft)}
+.ph__mt{display:none}
+.ph__loop{position:absolute;right:calc(-1 * clamp(12px,2vw,28px) / 2);top:calc(var(--c) / 2);transform:translate(50%,-50%);z-index:2;width:30px;height:30px;border-radius:50%;background:var(--bg);border:1px solid var(--edge);color:var(--num);display:grid;place-items:center;font-size:14px}
+.flow__return{position:absolute;left:0;right:0;top:calc(clamp(90px,9vw,130px) - 112px);width:100%;height:120px;overflow:visible;pointer-events:none}
+.flow__return path{fill:none;stroke:var(--ink);stroke-width:1.2;stroke-dasharray:6 6;vector-effect:non-scaling-stroke;opacity:0;transition:opacity .8s ease 1.6s}
+.flow.in .flow__return path{opacity:.55}
+.flow__return .flow__head{stroke-dasharray:none}
+.flow__note{position:absolute;top:0;left:50%;transform:translateX(-50%) rotate(-2deg);max-width:240px;background:#F2EC8F;color:#2B2A1C;font-size:13px;line-height:1.4;padding:14px 16px;box-shadow:0 8px 20px -10px rgba(0,0,0,.25);opacity:0;transition:opacity .6s ease 1.8s}
+.flow.in .flow__note{opacity:1}
+@media (max-width:900px){
+  .flow{padding-top:0}
+  .flow__return{display:none}
+  .flow__note{position:static;transform:rotate(-1.5deg);margin:0 0 32px auto;display:block}
+  .flow__track{grid-template-columns:1fr;gap:28px;padding-left:0}
+  .flow__track::before,.flow__track::after{left:44px;right:auto;top:0;bottom:0;width:1px;height:auto}
+  .flow__track::after{height:0;bottom:auto;transition:height 2.2s cubic-bezier(.4,0,.2,1)}
+  .flow.in .flow__track::after{width:1px;height:100%}
+  .ph{--c:88px;display:grid;grid-template-columns:var(--c) minmax(0,1fr);column-gap:18px;text-align:left;align-items:start}
+  .ph__circle{grid-row:1 / span 4;padding:8px;gap:0}
+  .ph__n{font-size:32px}
+  .ph__t{display:none}
+  .ph__circle::after{content:none}
+  .ph__list{grid-column:2;align-items:flex-start;margin-top:0}
+  .ph__mt{display:block;grid-column:2;font-size:18px;font-weight:600;letter-spacing:-.015em;margin:4px 0 10px}
+  .ph__tools{grid-column:2}
+  .ph__loop{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .ph,.flow__track::after,.flow__return path,.flow__note{transition:none}
+}
 </style>
 </head>
 <body>
@@ -596,8 +644,36 @@ em{font-style:normal}
 </section>
 
 <!-- PROCESS -->
-<section class="proc wrap" id="process">
-  <figure class="proc__fig rv"><img src="proces.webp" loading="lazy" alt="Můj designový proces v pěti fázích: 1 Kick-off a zadání, 2 Pochopení kontextu, 3 Wireframy a design, 4 Validace, 5 Handoff — a pak se proces opakuje s daty z releasu"></figure>
+<section class="proc wrap" id="process" aria-label="Jak pracuji">
+  <div class="flow" data-flow>
+    <svg class="flow__return" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M900 118 C 880 10, 360 10, 300 118" /><path class="flow__head" d="M296 97 L300 118 L318 106" /></svg>
+    <ol class="flow__track">
+    <li class="ph ph--pink" style="--i:0">
+      <div class="ph__circle"><span class="ph__n">1</span><h3 class="ph__t">Kick-off &amp; zadání</h3></div><p class="ph__mt" aria-hidden="true">Kick-off &amp; zadání</p>
+      <ul class="ph__list"><li>Proč a co — skutečný problém a smysl zadání</li><li>Ujasnit si cíle</li><li>Rozhovory s produktovým týmem</li><li>Pojmenovat limity: čas, data, technika, byznys</li><li>Rizika</li></ul>
+      <p class="ph__tools">Jira · Confluence</p>
+    </li>
+    <li class="ph ph--grey" style="--i:1">
+      <div class="ph__circle"><span class="ph__n">2</span><h3 class="ph__t">Pochopení kontextu</h3></div><p class="ph__mt" aria-hidden="true">Pochopení kontextu</p>
+      <ul class="ph__list"><li>Research — nasát kontext a prozkoumat podobná řešení</li><li>Analýza dat</li><li>Audit současného řešení: co funguje, co je problém, kde je chaos</li><li>Stanovit priority</li></ul>
+      <p class="ph__tools">Hotjar · Google Analytics · Clarity</p>
+    </li>
+    <li class="ph ph--green" style="--i:2">
+      <div class="ph__circle"><span class="ph__n">3</span><h3 class="ph__t">Wireframy &amp; design</h3></div><p class="ph__mt" aria-hidden="true">Wireframy &amp; design</p><span class="ph__loop" aria-hidden="true">⇄</span>
+      <ul class="ph__list"><li>Wireframy</li><li>Varianty řešení</li><li>Prototypy</li></ul>
+      <p class="ph__tools">Figma</p>
+    </li>
+    <li class="ph ph--blue" style="--i:3">
+      <div class="ph__circle"><span class="ph__n">4</span><h3 class="ph__t">Validace</h3></div><p class="ph__mt" aria-hidden="true">Validace</p>
+      <ul class="ph__list"><li>Prezentace návrhů produktovému týmu a stakeholderům</li><li>FE/BE, pokud jde o věc technického rázu</li><li>Validace s uživateli, pokud to projekt umožňuje</li><li>Ujasnit si, co dál</li></ul>
+    </li>
+    <li class="ph ph--grey" style="--i:4">
+      <div class="ph__circle"><span class="ph__n">5</span><h3 class="ph__t">Handoff</h3></div><p class="ph__mt" aria-hidden="true">Handoff</p>
+      <ul class="ph__list"><li>Připravit návrh k realizaci — srozumitelné podklady pro vývoj</li><li>Komunikovat s vývojem</li><li>Dodat dokumentaci a popisy</li></ul>
+      <p class="ph__tools">Figma · Confluence · Slack · Jira</p>
+    </li>
+    </ol>
+  </div>
 </section>
 
 <!-- BRAND WALL -->
@@ -933,6 +1009,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io2.unobserve(e.target);}}),{threshold:.08,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(".rv").forEach(el=>io2.observe(el));
+const fl=document.querySelector("[data-flow]");if(fl){new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){fl.classList.add("in");o.disconnect();}}),{threshold:.2}).observe(fl);}
 </script>
 
 
